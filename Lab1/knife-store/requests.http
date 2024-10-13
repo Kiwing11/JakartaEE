@@ -1,0 +1,154 @@
+#GET USERS
+
+GET http://localhost:9082/knife-store/api/users
+
+###
+
+#GET USER
+
+GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a6
+
+###
+
+#GET NON EXISTING USER - 404 NOT FOUND
+
+GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0
+
+###
+
+#CREATE USER
+
+PUT http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
+Content-Type: application/json
+
+{
+  "login": "testPodczasLabow",
+  "name": "Lab",
+  "surname": "1",
+  "password": "test123",
+  "birthDate": "1990-01-01"
+}
+
+###
+
+#UPDATE USER
+
+PATCH http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a6
+Content-Type: application/json
+
+{
+  "name": "Updated Name",
+  "surname": "Updated Surname",
+  "birthDate": "2000-01-01"
+}
+
+###
+
+#TRY TO UPDATE NON EXISTING USER - 404 NOT FOUND
+
+PATCH http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0
+Content-Type: application/json
+
+{
+  "name": "Updated Name",
+  "surname": "Updated Surname",
+  "birthDate": "2000-01-01"
+}
+
+###
+
+#DELETE USER
+
+DELETE http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a6
+
+###
+
+#TRY TO DELETE NON EXISTING USER - 404 NOT FOUND
+
+DELETE http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0
+
+###
+
+#CREATE USER's PHOTO
+
+PUT http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b65d87/photo
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="photo"; filename="photo4.jpg"
+
+< D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\resources\photo4.jpg
+--boundary--
+
+###
+
+#TRY TO CREATE PHOTO FOR NON EXISTING USER - 404 NOT FOUND
+
+PUT http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0/photo
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="photo"; filename="photo4.jpg"
+
+< D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\resources\photo4.jpg
+--boundary--
+
+###
+
+#GET CREATED USER's PHOTO
+
+GET http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b65d87/photo
+
+###
+
+
+#GET USER's PHOTO
+
+GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a6/photo
+
+###
+
+#GET NON EXISTING USER's PHOTO - 404 NOT FOUND
+
+GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0/photo
+
+###
+
+#DELETE USER's PHOTO
+
+DELETE http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b65d87/photo
+
+###
+
+#TRY TO DELETE NON EXISTING USER's PHOTO - 404 NOT FOUND
+
+DELETE http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0/photo
+
+###
+
+#PATCH USER's PHOTO
+
+PATCH http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b65d87/photo
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="photo"; filename="photo3.jpg"
+
+< D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\resources\photo3.jpg
+--boundary--
+
+###
+
+#PATCH NON EXISTING USER's PHOTO - 404 NOT FOUND
+
+PATCH http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0/photo
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="photo"; filename="photo3.jpg"
+
+< D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\resources\photo3.jpg
+--boundary--
+
+###
+

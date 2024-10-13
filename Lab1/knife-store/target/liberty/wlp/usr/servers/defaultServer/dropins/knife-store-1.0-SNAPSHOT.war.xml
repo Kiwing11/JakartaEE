@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archive>
+    <dir sourceOnDisk="D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\webapp" targetInArchive="/"/>
+    <dir sourceOnDisk="D:\Sem7\Jakarta_EE\Lab1\knife-store\target\classes" targetInArchive="/WEB-INF/classes"/>
+    <file sourceOnDisk="D:\Sem7\Jakarta_EE\Lab1\knife-store\target\tmp\META-INF\MANIFEST.MF" targetInArchive="/META-INF/MANIFEST.MF"/>
+</archive>
