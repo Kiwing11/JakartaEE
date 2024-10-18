@@ -77,7 +77,7 @@ Content-Type: multipart/form-data; boundary=boundary
 --boundary
 Content-Disposition: form-data; name="photo"; filename="photo4.jpg"
 
-< D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\resources\photo4.jpg
+< D:\Sem7\Jakarta_EE\knife-store\src\main\resources\photo4.jpg
 --boundary--
 
 ###
@@ -90,7 +90,7 @@ Content-Type: multipart/form-data; boundary=boundary
 --boundary
 Content-Disposition: form-data; name="photo"; filename="photo4.jpg"
 
-< D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\resources\photo4.jpg
+< D:\Sem7\Jakarta_EE\knife-store\src\main\resources\photo4.jpg
 --boundary--
 
 ###
@@ -134,7 +134,7 @@ Content-Type: multipart/form-data; boundary=boundary
 --boundary
 Content-Disposition: form-data; name="photo"; filename="photo3.jpg"
 
-< D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\resources\photo3.jpg
+< D:\Sem7\Jakarta_EE\knife-store\src\main\resources\photo3.jpg
 --boundary--
 
 ###

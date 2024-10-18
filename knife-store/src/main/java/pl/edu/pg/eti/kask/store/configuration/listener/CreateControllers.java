@@ -14,13 +14,10 @@ public class CreateControllers implements ServletContextListener {
 
         @Override
         public void contextInitialized(ServletContextEvent event) {
-            PhotoService photoService = (PhotoService) event.getServletContext().getAttribute("photoService");
             UserService userService = (UserService) event.getServletContext().getAttribute("userService");
-
             event.getServletContext().setAttribute("userController", new UserDefaultController(
                     userService,
                     new DtoFunctionFactory()
             ));
-            event.getServletContext().setAttribute("photoService", new PhotoService(event.getServletContext().getInitParameter("photoDirectory")));
         }
 }
