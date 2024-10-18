@@ -12,8 +12,10 @@ D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\java\pl\edu\pg\eti\kask\store\facto
 D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\java\pl\edu\pg\eti\kask\store\knife\entity\Category.java
 D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\java\pl\edu\pg\eti\kask\store\knife\entity\Knife.java
 D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\java\pl\edu\pg\eti\kask\store\knife\entity\KnifeType.java
+D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\java\pl\edu\pg\eti\kask\store\repository\api\file\FileRepository.java
 D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\java\pl\edu\pg\eti\kask\store\repository\api\Repository.java
 D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\java\pl\edu\pg\eti\kask\store\serialization\component\CloningUtility.java
+D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\java\pl\edu\pg\eti\kask\store\service\PhotoService.java
 D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\java\pl\edu\pg\eti\kask\store\user\controller\api\UserController.java
 D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\java\pl\edu\pg\eti\kask\store\user\controller\impl\UserDefaultController.java
 D:\Sem7\Jakarta_EE\Lab1\knife-store\src\main\java\pl\edu\pg\eti\kask\store\user\dto\function\RequestToUserFunction.java

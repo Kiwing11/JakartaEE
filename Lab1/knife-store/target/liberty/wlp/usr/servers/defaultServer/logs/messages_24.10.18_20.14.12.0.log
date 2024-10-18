@@ -1,0 +1,143 @@
+********************************************************************************
+product = Open Liberty 24.0.0.10 (wlp-1.0.94.cl241020240923-1638)
+wlp.install.dir = D:/Sem7/Jakarta_EE/Lab1/knife-store/target/liberty/wlp/
+java.home = C:\Program Files\Java\jdk-17.0.2
+java.version = 17.0.2
+java.runtime = Java(TM) SE Runtime Environment (17.0.2+8-LTS-86)
+os = Windows 11 (10.0; amd64) (pl_PL)
+process = 26036@LAPTOP-T24OO3IA
+Classpath = D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\bin\tools\ws-server.jar
+Java Library path = C:\Program Files\Java\jdk-17.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Java\jdk-17.0.2\bin;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;D:\PuTTY\;D:\Gpg4win\..\GnuPG\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\Tools\Binn\;C:\Users\k123\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\apache-maven-3.9.9\bin;D:\Python3_11\Scripts\;D:\Python3_11\;C:\msys64\mingw64\bin;D:\Python\Scripts\;D:\Python\;C:\Users\k123\AppData\Local\Microsoft\WindowsApps;D:\Microsoft VS Code\bin;";D:\php";D:\JetBrains\IntelliJ IDEA Community Edition 2023.2.2\bin;D:\CLion 2021.3.4\bin;D:\PyCharm 2022.1.1\bin;D:\opencv\build\x64\vc14\bin;D:\opencv\build\x64\vc15\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\k123\.dotnet\tools;C:\ghcup\bin;D:\PyCharm Community Edition 2023.1\bin;D:\JetBrains\IntelliJ IDEA 2023.2.3\bin;C:\Users\k123\.dotnet\tools;C:\Users\k123\AppData\Roaming\npm;C:\Users\k123\AppData\Roaming\nvm;C:\Program Files\nodejs;.
+********************************************************************************
+[18.10.2024, 20:07:53:088 CEST] 00000001 com.ibm.ws.kernel.launch.internal.FrameworkManager           A CWWKE0001I: Serwer defaultServer zosta³ uruchomiony.
+[18.10.2024, 20:07:53:746 CEST] 00000001 com.ibm.ws.kernel.launch.internal.FrameworkManager           I CWWKE0002I: J¹dro zosta³o uruchomione po 12,778 sek. s
+[18.10.2024, 20:07:53:762 CEST] 00000029 com.ibm.ws.kernel.feature.internal.FeatureManager            I CWWKF0007I: Uruchomiono aktualizacjê sk³adnika.
+[18.10.2024, 20:07:53:961 CEST] 00000020 com.ibm.ws.app.manager.internal.monitor.DropinMonitor        A CWWKZ0058I: Monitorowanie aplikacji w katalogu dropins.
+[18.10.2024, 20:07:54:304 CEST] 00000031 com.ibm.ws.app.manager.AppMessageHelper                      I CWWKZ0018I: Uruchamianie aplikacji knife-store-1.0-SNAPSHOT.
+[18.10.2024, 20:07:54:305 CEST] 00000031 bm.ws.app.manager.war.internal.WARDeployedAppInfoFactoryImpl I CWWKZ0134I: Aplikacja knife-store-1.0-SNAPSHOT u¿ywa luŸnej definicji aplikacji w po³o¿eniu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\dropins\knife-store-1.0-SNAPSHOT.war.xml.
+[18.10.2024, 20:07:55:020 CEST] 00000031 com.ibm.ws.session.WASSessionCore                            I SESN8501I: Mened¿er sesji nie znalaz³ po³o¿enia trwa³ej pamiêci masowej. Obiekty HttpSession bêd¹ zapisywane w pamiêci lokalnego serwera aplikacji.
+[18.10.2024, 20:07:55:053 CEST] 00000031 com.ibm.ws.webcontainer.osgi.webapp.WebGroup                 I SRVE0169I: £adowanie modu³u WWW: knife-store-1.0-SNAPSHOT.
+[18.10.2024, 20:07:55:056 CEST] 00000031 com.ibm.ws.webcontainer                                      I SRVE0250I: Modu³ WWW knife-store-1.0-SNAPSHOT zosta³ powi¹zany z hostem wirtualnym default_host.
+[18.10.2024, 20:07:55:057 CEST] 00000031 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0016I: Dostêpna aplikacja WWW (default_host): http://localhost:9082/knife-store/
+[18.10.2024, 20:07:55:097 CEST] 0000002b com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: Automatycznie wygenerowano plik konfiguracyjny wtyczki serwera WWW dla tego serwera w katalogu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\logs\state\plugin-cfg.xml.
+[18.10.2024, 20:07:55:142 CEST] 00000032 com.ibm.ws.session.WASSessionCore                            I SESN0176I: W odniesieniu do klucza aplikacji default_host/knife-store zostanie utworzony nowy kontekst sesji.
+[18.10.2024, 20:07:55:150 CEST] 00000032 com.ibm.ws.util                                              I SESN0172I: Mened¿er sesji korzysta przy generowaniu identyfikatora sesji z domyœlnej implementacji klasy SecureRandom jêzyka Java.
+[18.10.2024, 20:07:55:219 CEST] 00000032 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0001I: Aplikacja knife-store-1.0-SNAPSHOT zosta³a uruchomiona w ci¹gu 0,914 sek.
+[18.10.2024, 20:07:55:239 CEST] 00000029 com.ibm.ws.tcpchannel.internal.TCPPort                       I CWWKO0219I: Kana³ TCP defaultHttpEndpoint zosta³ uruchomiony i obecnie nas³uchuje ¿¹dañ na hoœcie kubernetes.docker.internal  (IPv4: 127.0.0.1) (port 9082).
+[18.10.2024, 20:07:55:254 CEST] 00000029 com.ibm.ws.kernel.feature.internal.FeatureManager            A CWWKF0012I: Serwer zosta³ zainstalowany z nastêpuj¹cymi sk³adnikami: [jsonb-3.0, jsonp-2.1, servlet-6.0].
+[18.10.2024, 20:07:55:254 CEST] 00000029 com.ibm.ws.kernel.feature.internal.FeatureManager            I CWWKF0008I: Aktualizacja sk³adnika zosta³a zakoñczona po 1,509 sek.
+[18.10.2024, 20:07:55:255 CEST] 00000029 com.ibm.ws.kernel.feature.internal.FeatureManager            A CWWKF0011I: Serwer defaultServer jest gotowy do dzia³ania w trybie M¹drzejszy Œwiat. Serwer defaultServer zosta³ uruchomiony w ci¹gu 14,289 sekund.
+[18.10.2024, 20:07:59:666 CEST] 00000039 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0017I: Usuniêta aplikacja WWW (default_host): http://localhost:9082/knife-store/
+[18.10.2024, 20:07:59:679 CEST] 00000039 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0009I: Aplikacja knife-store-1.0-SNAPSHOT zosta³a zatrzymana pomyœlnie.
+[18.10.2024, 20:07:59:685 CEST] 00000039 com.ibm.ws.app.manager.AppMessageHelper                      I CWWKZ0018I: Uruchamianie aplikacji knife-store-1.0-SNAPSHOT.
+[18.10.2024, 20:07:59:685 CEST] 00000039 bm.ws.app.manager.war.internal.WARDeployedAppInfoFactoryImpl I CWWKZ0134I: Aplikacja knife-store-1.0-SNAPSHOT u¿ywa luŸnej definicji aplikacji w po³o¿eniu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\dropins\knife-store-1.0-SNAPSHOT.war.xml.
+[18.10.2024, 20:07:59:913 CEST] 00000042 com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: Automatycznie wygenerowano plik konfiguracyjny wtyczki serwera WWW dla tego serwera w katalogu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\logs\state\plugin-cfg.xml.
+[18.10.2024, 20:08:00:185 CEST] 00000039 com.ibm.ws.webcontainer.osgi.webapp.WebGroup                 I SRVE0169I: £adowanie modu³u WWW: knife-store-1.0-SNAPSHOT.
+[18.10.2024, 20:08:00:185 CEST] 00000039 com.ibm.ws.webcontainer                                      I SRVE0250I: Modu³ WWW knife-store-1.0-SNAPSHOT zosta³ powi¹zany z hostem wirtualnym default_host.
+[18.10.2024, 20:08:00:185 CEST] 00000039 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0016I: Dostêpna aplikacja WWW (default_host): http://localhost:9082/knife-store/
+[18.10.2024, 20:08:00:220 CEST] 0000002c com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: Automatycznie wygenerowano plik konfiguracyjny wtyczki serwera WWW dla tego serwera w katalogu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\logs\state\plugin-cfg.xml.
+[18.10.2024, 20:08:00:232 CEST] 0000002b com.ibm.ws.session.WASSessionCore                            I SESN0176I: W odniesieniu do klucza aplikacji default_host/knife-store zostanie utworzony nowy kontekst sesji.
+[18.10.2024, 20:08:00:233 CEST] 0000002b com.ibm.ws.util                                              I SESN0172I: Mened¿er sesji korzysta przy generowaniu identyfikatora sesji z domyœlnej implementacji klasy SecureRandom jêzyka Java.
+[18.10.2024, 20:08:00:281 CEST] 0000002b com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0003I: Aplikacja knife-store-1.0-SNAPSHOT zosta³a zaktualizowana w ci¹gu 0,596 sek.
+[18.10.2024, 20:10:36:081 CEST] 00000038 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0017I: Usuniêta aplikacja WWW (default_host): http://localhost:9082/knife-store/
+[18.10.2024, 20:10:36:086 CEST] 00000038 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0009I: Aplikacja knife-store-1.0-SNAPSHOT zosta³a zatrzymana pomyœlnie.
+[18.10.2024, 20:10:36:094 CEST] 00000038 com.ibm.ws.app.manager.AppMessageHelper                      I CWWKZ0018I: Uruchamianie aplikacji knife-store-1.0-SNAPSHOT.
+[18.10.2024, 20:10:36:095 CEST] 00000038 bm.ws.app.manager.war.internal.WARDeployedAppInfoFactoryImpl I CWWKZ0134I: Aplikacja knife-store-1.0-SNAPSHOT u¿ywa luŸnej definicji aplikacji w po³o¿eniu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\dropins\knife-store-1.0-SNAPSHOT.war.xml.
+[18.10.2024, 20:10:36:106 CEST] 00000044 com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: Automatycznie wygenerowano plik konfiguracyjny wtyczki serwera WWW dla tego serwera w katalogu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\logs\state\plugin-cfg.xml.
+[18.10.2024, 20:10:36:468 CEST] 00000038 com.ibm.ws.webcontainer.osgi.webapp.WebGroup                 I SRVE0169I: £adowanie modu³u WWW: knife-store-1.0-SNAPSHOT.
+[18.10.2024, 20:10:36:468 CEST] 00000038 com.ibm.ws.webcontainer                                      I SRVE0250I: Modu³ WWW knife-store-1.0-SNAPSHOT zosta³ powi¹zany z hostem wirtualnym default_host.
+[18.10.2024, 20:10:36:468 CEST] 00000038 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0016I: Dostêpna aplikacja WWW (default_host): http://localhost:9082/knife-store/
+[18.10.2024, 20:10:36:496 CEST] 0000002d com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: Automatycznie wygenerowano plik konfiguracyjny wtyczki serwera WWW dla tego serwera w katalogu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\logs\state\plugin-cfg.xml.
+[18.10.2024, 20:10:36:505 CEST] 00000041 com.ibm.ws.session.WASSessionCore                            I SESN0176I: W odniesieniu do klucza aplikacji default_host/knife-store zostanie utworzony nowy kontekst sesji.
+[18.10.2024, 20:10:36:505 CEST] 00000041 com.ibm.ws.util                                              I SESN0172I: Mened¿er sesji korzysta przy generowaniu identyfikatora sesji z domyœlnej implementacji klasy SecureRandom jêzyka Java.
+[18.10.2024, 20:10:36:537 CEST] 00000041 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0003I: Aplikacja knife-store-1.0-SNAPSHOT zosta³a zaktualizowana w ci¹gu 0,442 sek.
+[18.10.2024, 20:11:55:441 CEST] 00000043 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0017I: Usuniêta aplikacja WWW (default_host): http://localhost:9082/knife-store/
+[18.10.2024, 20:11:55:444 CEST] 00000043 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0009I: Aplikacja knife-store-1.0-SNAPSHOT zosta³a zatrzymana pomyœlnie.
+[18.10.2024, 20:11:55:449 CEST] 00000043 com.ibm.ws.app.manager.AppMessageHelper                      I CWWKZ0018I: Uruchamianie aplikacji knife-store-1.0-SNAPSHOT.
+[18.10.2024, 20:11:55:449 CEST] 00000043 bm.ws.app.manager.war.internal.WARDeployedAppInfoFactoryImpl I CWWKZ0134I: Aplikacja knife-store-1.0-SNAPSHOT u¿ywa luŸnej definicji aplikacji w po³o¿eniu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\dropins\knife-store-1.0-SNAPSHOT.war.xml.
+[18.10.2024, 20:11:55:469 CEST] 00000042 com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: Automatycznie wygenerowano plik konfiguracyjny wtyczki serwera WWW dla tego serwera w katalogu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\logs\state\plugin-cfg.xml.
+[18.10.2024, 20:11:55:857 CEST] 00000043 com.ibm.ws.webcontainer.osgi.webapp.WebGroup                 I SRVE0169I: £adowanie modu³u WWW: knife-store-1.0-SNAPSHOT.
+[18.10.2024, 20:11:55:857 CEST] 00000043 com.ibm.ws.webcontainer                                      I SRVE0250I: Modu³ WWW knife-store-1.0-SNAPSHOT zosta³ powi¹zany z hostem wirtualnym default_host.
+[18.10.2024, 20:11:55:857 CEST] 00000043 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0016I: Dostêpna aplikacja WWW (default_host): http://localhost:9082/knife-store/
+[18.10.2024, 20:11:55:886 CEST] 00000034 com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: Automatycznie wygenerowano plik konfiguracyjny wtyczki serwera WWW dla tego serwera w katalogu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\logs\state\plugin-cfg.xml.
+[18.10.2024, 20:11:55:891 CEST] 0000002c com.ibm.ws.session.WASSessionCore                            I SESN0176I: W odniesieniu do klucza aplikacji default_host/knife-store zostanie utworzony nowy kontekst sesji.
+[18.10.2024, 20:11:55:892 CEST] 0000002c com.ibm.ws.util                                              I SESN0172I: Mened¿er sesji korzysta przy generowaniu identyfikatora sesji z domyœlnej implementacji klasy SecureRandom jêzyka Java.
+[18.10.2024, 20:11:55:919 CEST] 0000002c com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0003I: Aplikacja knife-store-1.0-SNAPSHOT zosta³a zaktualizowana w ci¹gu 0,470 sek.
+[18.10.2024, 20:13:23:918 CEST] 0000005d com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0017I: Usuniêta aplikacja WWW (default_host): http://localhost:9082/knife-store/
+[18.10.2024, 20:13:23:921 CEST] 0000005d com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0009I: Aplikacja knife-store-1.0-SNAPSHOT zosta³a zatrzymana pomyœlnie.
+[18.10.2024, 20:13:23:928 CEST] 0000005d com.ibm.ws.app.manager.AppMessageHelper                      I CWWKZ0018I: Uruchamianie aplikacji knife-store-1.0-SNAPSHOT.
+[18.10.2024, 20:13:23:928 CEST] 0000005d bm.ws.app.manager.war.internal.WARDeployedAppInfoFactoryImpl I CWWKZ0134I: Aplikacja knife-store-1.0-SNAPSHOT u¿ywa luŸnej definicji aplikacji w po³o¿eniu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\dropins\knife-store-1.0-SNAPSHOT.war.xml.
+[18.10.2024, 20:13:23:947 CEST] 00000043 com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: Automatycznie wygenerowano plik konfiguracyjny wtyczki serwera WWW dla tego serwera w katalogu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\logs\state\plugin-cfg.xml.
+[18.10.2024, 20:13:24:350 CEST] 0000005d com.ibm.ws.webcontainer.osgi.webapp.WebGroup                 I SRVE0169I: £adowanie modu³u WWW: knife-store-1.0-SNAPSHOT.
+[18.10.2024, 20:13:24:350 CEST] 0000005d com.ibm.ws.webcontainer                                      I SRVE0250I: Modu³ WWW knife-store-1.0-SNAPSHOT zosta³ powi¹zany z hostem wirtualnym default_host.
+[18.10.2024, 20:13:24:350 CEST] 0000005d com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0016I: Dostêpna aplikacja WWW (default_host): http://localhost:9082/knife-store/
+[18.10.2024, 20:13:24:377 CEST] 00000058 com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: Automatycznie wygenerowano plik konfiguracyjny wtyczki serwera WWW dla tego serwera w katalogu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\logs\state\plugin-cfg.xml.
+[18.10.2024, 20:13:24:383 CEST] 00000047 com.ibm.ws.session.WASSessionCore                            I SESN0176I: W odniesieniu do klucza aplikacji default_host/knife-store zostanie utworzony nowy kontekst sesji.
+[18.10.2024, 20:13:24:383 CEST] 00000047 com.ibm.ws.util                                              I SESN0172I: Mened¿er sesji korzysta przy generowaniu identyfikatora sesji z domyœlnej implementacji klasy SecureRandom jêzyka Java.
+[18.10.2024, 20:13:24:417 CEST] 00000047 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0003I: Aplikacja knife-store-1.0-SNAPSHOT zosta³a zaktualizowana w ci¹gu 0,488 sek.
+[18.10.2024, 20:13:28:862 CEST] 00000038 com.ibm.ws.webcontainer.servlet                              I SRVE0242I: [knife-store-1.0-SNAPSHOT] [/knife-store] [pl.edu.pg.eti.kask.store.controller.servlet.ApiServlet]: inicjowanie powiod³o siê.
+[18.10.2024, 20:13:35:375 CEST] 00000049 SystemOut                                                    O User updated: User(id=3c6f1eb1-8069-44ab-988f-d7fed2b65d87, login=testPodczasLabow, name=Lab, surname=1, birthDate=1990-01-01, photo=3c6f1eb1-8069-44ab-988f-d7fed2b65d87-20241018_201335.jpg)
+[18.10.2024, 20:13:35:898 CEST] 00000057 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0017I: Usuniêta aplikacja WWW (default_host): http://localhost:9082/knife-store/
+[18.10.2024, 20:13:35:900 CEST] 00000057 com.ibm.ws.webcontainer.servlet                              I SRVE0253I: [knife-store-1.0-SNAPSHOT] [/knife-store] [pl.edu.pg.eti.kask.store.controller.servlet.ApiServlet]: niszczenie powiod³o siê.
+[18.10.2024, 20:13:35:907 CEST] 00000057 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0009I: Aplikacja knife-store-1.0-SNAPSHOT zosta³a zatrzymana pomyœlnie.
+[18.10.2024, 20:13:35:922 CEST] 00000057 com.ibm.ws.app.manager.AppMessageHelper                      I CWWKZ0018I: Uruchamianie aplikacji knife-store-1.0-SNAPSHOT.
+[18.10.2024, 20:13:35:924 CEST] 00000057 bm.ws.app.manager.war.internal.WARDeployedAppInfoFactoryImpl I CWWKZ0134I: Aplikacja knife-store-1.0-SNAPSHOT u¿ywa luŸnej definicji aplikacji w po³o¿eniu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\dropins\knife-store-1.0-SNAPSHOT.war.xml.
+[18.10.2024, 20:13:35:933 CEST] 00000034 com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: Automatycznie wygenerowano plik konfiguracyjny wtyczki serwera WWW dla tego serwera w katalogu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\logs\state\plugin-cfg.xml.
+[18.10.2024, 20:13:36:397 CEST] 00000057 com.ibm.ws.webcontainer.osgi.webapp.WebGroup                 I SRVE0169I: £adowanie modu³u WWW: knife-store-1.0-SNAPSHOT.
+[18.10.2024, 20:13:36:398 CEST] 00000057 com.ibm.ws.webcontainer                                      I SRVE0250I: Modu³ WWW knife-store-1.0-SNAPSHOT zosta³ powi¹zany z hostem wirtualnym default_host.
+[18.10.2024, 20:13:36:398 CEST] 00000057 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0016I: Dostêpna aplikacja WWW (default_host): http://localhost:9082/knife-store/
+[18.10.2024, 20:13:36:421 CEST] 00000052 com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: Automatycznie wygenerowano plik konfiguracyjny wtyczki serwera WWW dla tego serwera w katalogu D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\logs\state\plugin-cfg.xml.
+[18.10.2024, 20:13:36:457 CEST] 00000048 com.ibm.ws.session.WASSessionCore                            I SESN0176I: W odniesieniu do klucza aplikacji default_host/knife-store zostanie utworzony nowy kontekst sesji.
+[18.10.2024, 20:13:36:458 CEST] 00000048 com.ibm.ws.util                                              I SESN0172I: Mened¿er sesji korzysta przy generowaniu identyfikatora sesji z domyœlnej implementacji klasy SecureRandom jêzyka Java.
+[18.10.2024, 20:13:36:527 CEST] 00000048 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0003I: Aplikacja knife-store-1.0-SNAPSHOT zosta³a zaktualizowana w ci¹gu 0,604 sek.
+[18.10.2024, 20:13:40:047 CEST] 00000055 com.ibm.ws.webcontainer.servlet                              I SRVE0242I: [knife-store-1.0-SNAPSHOT] [/knife-store] [pl.edu.pg.eti.kask.store.controller.servlet.ApiServlet]: inicjowanie powiod³o siê.
+[18.10.2024, 20:13:40:089 CEST] 00000055 com.ibm.ws.webcontainer.util.ApplicationErrorUtils           E SRVE0777E: Wyj¹tek zg³oszony przez klasê aplikacji java.util.Optional.orElseThrow:403
+pl.edu.pg.eti.kask.store.controller.servlet.exception.NotFoundException
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at pl.edu.pg.eti.kask.store.user.controller.impl.UserDefaultController.getUserPhoto(UserDefaultController.java:72)
+	at pl.edu.pg.eti.kask.store.controller.servlet.ApiServlet.doGet(ApiServlet.java:78)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:527)
+	at pl.edu.pg.eti.kask.store.controller.servlet.ApiServlet.service(ApiServlet.java:50)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.service(ServletWrapper.java:1266)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:754)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:451)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.invokeTarget(WebAppFilterChain.java:197)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:100)
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:126)
+	at pl.edu.pg.eti.kask.store.controller.filter.ExceptionFilter.doFilter(ExceptionFilter.java:22)
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:97)
+	at com.ibm.ws.webcontainer.filter.FilterInstanceWrapper.doFilter(FilterInstanceWrapper.java:203)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:93)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.doFilter(WebAppFilterManager.java:1069)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.invokeFilters(WebAppFilterManager.java:1260)
+	at com.ibm.ws.webcontainer.webapp.WebApp.handleRequest(WebApp.java:5096)
+	at com.ibm.ws.webcontainer.osgi.DynamicVirtualHost$2.handleRequest(DynamicVirtualHost.java:328)
+	at com.ibm.ws.webcontainer.WebContainer.handleRequest(WebContainer.java:1047)
+	at com.ibm.ws.webcontainer.osgi.DynamicVirtualHost$2.run(DynamicVirtualHost.java:293)
+	at com.ibm.ws.http.dispatcher.internal.channel.HttpDispatcherLink$TaskWrapper.run(HttpDispatcherLink.java:1260)
+	at com.ibm.ws.http.dispatcher.internal.channel.HttpDispatcherLink.wrapHandlerAndExecute(HttpDispatcherLink.java:476)
+	at com.ibm.ws.http.dispatcher.internal.channel.HttpDispatcherLink.ready(HttpDispatcherLink.java:435)
+	at com.ibm.ws.http.channel.internal.inbound.HttpInboundLink.handleDiscrimination(HttpInboundLink.java:569)
+	at com.ibm.ws.http.channel.internal.inbound.HttpInboundLink.handleNewRequest(HttpInboundLink.java:503)
+	at com.ibm.ws.http.channel.internal.inbound.HttpInboundLink.processRequest(HttpInboundLink.java:363)
+	at com.ibm.ws.http.channel.internal.inbound.HttpInboundLink.ready(HttpInboundLink.java:330)
+	at com.ibm.ws.tcpchannel.internal.NewConnectionInitialReadCallback.sendToDiscriminators(NewConnectionInitialReadCallback.java:169)
+	at com.ibm.ws.tcpchannel.internal.NewConnectionInitialReadCallback.complete(NewConnectionInitialReadCallback.java:77)
+	at com.ibm.ws.tcpchannel.internal.WorkQueueManager.requestComplete(WorkQueueManager.java:516)
+	at com.ibm.ws.tcpchannel.internal.WorkQueueManager.attemptIO(WorkQueueManager.java:586)
+	at com.ibm.ws.tcpchannel.internal.WorkQueueManager.workerRun(WorkQueueManager.java:970)
+	at com.ibm.ws.tcpchannel.internal.WorkQueueManager$Worker.run(WorkQueueManager.java:1059)
+	at com.ibm.ws.threading.internal.ExecutorServiceImpl$RunnableWrapper.run(ExecutorServiceImpl.java:298)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+[18.10.2024, 20:13:48:988 CEST] 00000019 com.ibm.ws.kernel.launch.internal.ServerCommandListener      A CWWKE0055I: Za¿¹dano zamkniêcia serwera w dniu pi¹tek, 18 paŸdziernika 2024 o godzinie 20:13. Serwer defaultServer jest wy³¹czany.
+[18.10.2024, 20:13:48:992 CEST] 0000005f com.ibm.ws.runtime.update.internal.RuntimeUpdateManagerImpl  A CWWKE1100I: Oczekiwanie przez maksymalnie 30 s na wyciszenie serwera.
+[18.10.2024, 20:13:48:996 CEST] 00000038 com.ibm.ws.tcpchannel.internal.TCPChannel                    I CWWKO0220I: Dla kana³u TCP defaultHttpEndpoint zatrzymano nas³uchiwanie ¿¹dañ na hoœcie kubernetes.docker.internal  (IPv4: 127.0.0.1) (port 9082).
+[18.10.2024, 20:13:48:996 CEST] 00000038 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0017I: Usuniêta aplikacja WWW (default_host): http://localhost:9082/knife-store/
+[18.10.2024, 20:13:50:000 CEST] 0000005f com.ibm.ws.runtime.update.internal.RuntimeUpdateManagerImpl  I CWWKE1101I: Zakoñczono wyciszanie serwera.
+[18.10.2024, 20:13:50:011 CEST] 00000047 com.ibm.ws.webcontainer.servlet                              I SRVE0253I: [knife-store-1.0-SNAPSHOT] [/knife-store] [pl.edu.pg.eti.kask.store.controller.servlet.ApiServlet]: niszczenie powiod³o siê.
+[18.10.2024, 20:13:50:014 CEST] 00000047 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0009I: Aplikacja knife-store-1.0-SNAPSHOT zosta³a zatrzymana pomyœlnie.
+[18.10.2024, 20:13:50:254 CEST] 00000001 com.ibm.ws.kernel.launch.internal.FrameworkManager           A CWWKE0036I: Serwer defaultServer zosta³ zatrzymany po 6 min., 9,289 sek..

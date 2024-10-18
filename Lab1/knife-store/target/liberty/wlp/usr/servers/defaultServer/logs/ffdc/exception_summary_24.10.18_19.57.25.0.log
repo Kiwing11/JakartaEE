@@ -1,0 +1,6 @@
+
+ Index  Count  Time of first Occurrence    Time of last Occurrence     Exception SourceId ProbeId
+------+------+---------------------------+---------------------------+---------------------------
+     0      1 18.10.2024, 19:57:25:361 CEST 18.10.2024, 19:57:25:361 CEST java.lang.NullPointerException com.ibm.ws.webcontainer.filter.WebAppFilterManager.invokeFilters 1105
+                                                                            - D:\Sem7\Jakarta_EE\Lab1\knife-store\target\liberty\wlp\usr\servers\defaultServer\logs\ffdc\ffdc_24.10.18_19.57.25.0.log
+------+------+---------------------------+---------------------------+---------------------------
