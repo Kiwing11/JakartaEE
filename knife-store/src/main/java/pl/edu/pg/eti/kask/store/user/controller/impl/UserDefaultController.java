@@ -1,5 +1,7 @@
 package pl.edu.pg.eti.kask.store.user.controller.impl;
 
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import pl.edu.pg.eti.kask.store.controller.servlet.exception.BadRequestException;
 import pl.edu.pg.eti.kask.store.controller.servlet.exception.NotFoundException;
 import pl.edu.pg.eti.kask.store.factory.DtoFunctionFactory;
@@ -14,10 +16,12 @@ import pl.edu.pg.eti.kask.store.user.service.UserService;
 import java.io.InputStream;
 import java.util.UUID;
 
+@RequestScoped
 public class UserDefaultController implements UserController {
     private final UserService service;
     private final DtoFunctionFactory factory;
 
+    @Inject
     public UserDefaultController(UserService userService, DtoFunctionFactory dtoFunctionFactory) {
         this.service = userService;
         this.factory =  dtoFunctionFactory;

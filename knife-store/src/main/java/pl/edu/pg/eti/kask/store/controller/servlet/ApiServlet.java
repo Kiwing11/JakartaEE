@@ -1,5 +1,6 @@
 package pl.edu.pg.eti.kask.store.controller.servlet;
 
+import jakarta.inject.Inject;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.servlet.ServletException;
@@ -8,6 +9,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import pl.edu.pg.eti.kask.store.knife.controller.api.CategoryController;
+import pl.edu.pg.eti.kask.store.knife.controller.api.KnifeController;
+import pl.edu.pg.eti.kask.store.knife.dto.PatchCategoryRequest;
+import pl.edu.pg.eti.kask.store.knife.dto.PatchKnifeRequest;
+import pl.edu.pg.eti.kask.store.knife.dto.PutCategoryRequest;
+import pl.edu.pg.eti.kask.store.knife.dto.PutKnifeRequest;
 import pl.edu.pg.eti.kask.store.service.PhotoService;
 import pl.edu.pg.eti.kask.store.user.controller.api.UserController;
 import pl.edu.pg.eti.kask.store.user.dto.PatchUserRequest;
@@ -19,6 +26,7 @@ import java.nio.file.*;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 @WebServlet(urlPatterns = {
         ApiServlet.Paths.API + "/*"
@@ -26,6 +34,8 @@ import java.util.regex.Pattern;
 @MultipartConfig(maxFileSize = 200 * 1024)
 public class ApiServlet extends HttpServlet {
     private UserController userController;
+    private KnifeController knifeController;
+    private CategoryController categoryController;
     private PhotoService photoService;
 
 
@@ -38,9 +48,23 @@ public class ApiServlet extends HttpServlet {
         public static final Pattern USER = Pattern.compile("/users/(%s)".formatted(UUID.pattern()));
         public static final Pattern USERS = Pattern.compile("/users/?");
         public static final Pattern USER_PHOTO = Pattern.compile("/users/(%s)/photo".formatted(UUID.pattern()));
+        public static final Pattern KNIFE = Pattern.compile("/knives/(%s)".formatted(UUID.pattern()));
+        public static final Pattern KNIVES = Pattern.compile("/knives/?");
+        public static final Pattern CATEGORY = Pattern.compile("/categories/(%s)".formatted(UUID.pattern()));
+        public static final Pattern CATEGORIES = Pattern.compile("/categories/?");
+        public static final Pattern CATEGORY_KNIVES = Pattern.compile("/categories/(%s)/knives".formatted(UUID.pattern()));
+        public static final Pattern USER_KNIVES = Pattern.compile("/users/(%s)/knives".formatted(UUID.pattern()));
     }
 
     private final Jsonb jsonb = JsonbBuilder.create();
+
+    @Inject
+    public ApiServlet(UserController userController, PhotoService photoService, KnifeController knifeController, CategoryController categoryController) {
+        this.userController = userController;
+        this.photoService = photoService;
+        this.knifeController = knifeController;
+        this.categoryController = categoryController;
+    }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,13 +73,6 @@ public class ApiServlet extends HttpServlet {
         }else {
             super.service(request, response);
         }
-    }
-
-    @Override
-    public void init() throws ServletException {
-        photoService = (PhotoService) getServletContext().getAttribute("photoService");
-        userController = (UserController) getServletContext().getAttribute("userController");
-        super.init();
     }
 
     @Override
@@ -81,7 +98,35 @@ public class ApiServlet extends HttpServlet {
                 } catch (IOException e) {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND, "Photo not found");
                 }
-
+                return;
+            } else if (path.matches(Patterns.KNIVES.pattern())){
+                response.setContentType("application/json");
+                response.getWriter().write(jsonb.toJson(knifeController.getKnives()));
+                return;
+            } else if (path.matches(Patterns.KNIFE.pattern())) {
+                response.setContentType("application/json");
+                UUID id = extractUuid(Patterns.KNIFE, path);
+                response.getWriter().write(jsonb.toJson(knifeController.getKnife(id)));
+                return;
+            } else if (path.matches(Patterns.CATEGORIES.pattern())) {
+                response.setContentType("application/json");
+                response.getWriter().write(jsonb.toJson(categoryController.getCategories()));
+                return;
+            } else if (path.matches(Patterns.CATEGORY.pattern())) {
+                response.setContentType("application/json");
+                UUID id = extractUuid(Patterns.CATEGORY, path);
+                response.getWriter().write(jsonb.toJson(categoryController.getCategory(id)));
+                return;
+            } else if (path.matches(Patterns.CATEGORY_KNIVES.pattern())) {
+                response.setContentType("application/json");
+                UUID id = extractUuid(Patterns.CATEGORY_KNIVES, path);
+                response.getWriter().write(jsonb.toJson(knifeController.getKnivesByCategory(id)));
+                return;
+            } else if (path.matches(Patterns.USER_KNIVES.pattern())) {
+                response.setContentType("application/json");
+                UUID id = extractUuid(Patterns.USER_KNIVES, path);
+                response.getWriter().write(jsonb.toJson(knifeController.getKnivesByUser(id)));
+                System.out.println(knifeController.getKnivesByUser(id));
                 return;
             }
         }
@@ -107,6 +152,16 @@ public class ApiServlet extends HttpServlet {
                     response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred: " + e.getMessage());
                 }
                 return;
+            } else if(path.matches(Patterns.KNIFE.pattern())){
+                UUID id = extractUuid(Patterns.KNIFE, path);
+                knifeController.putKnife(id, jsonb.fromJson(request.getReader(), PutKnifeRequest.class));
+                response.addHeader("Location", createUrl(request, Paths.API, "knives", id.toString()));
+                return;
+            } else if(path.matches(Patterns.CATEGORY.pattern())){
+                UUID id = extractUuid(Patterns.CATEGORY, path);
+                categoryController.putCategory(id, jsonb.fromJson(request.getReader(), PutCategoryRequest.class));
+                response.addHeader("Location", createUrl(request, Paths.API, "categories", id.toString()));
+                return;
             }
         }
         response.setStatus(HttpServletResponse.SC_NOT_FOUND);
@@ -130,6 +185,14 @@ public class ApiServlet extends HttpServlet {
                 } catch (IOException e) {
                     response.sendError(HttpServletResponse.SC_NOT_FOUND, "Photo not found in database file system.");
                 }
+                return;
+            }else if(path.matches(Patterns.KNIFE.pattern())){
+                UUID id = extractUuid(Patterns.KNIFE, path);
+                knifeController.deleteKnife(id);
+                return;
+            }else if(path.matches(Patterns.CATEGORY.pattern())){
+                UUID id = extractUuid(Patterns.CATEGORY, path);
+                categoryController.deleteCategory(id);
                 return;
             }
         }
@@ -155,6 +218,14 @@ public class ApiServlet extends HttpServlet {
                 } catch (IOException e) {
                     response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred: " + e.getMessage());
                 }
+                return;
+            }else if(path.matches(Patterns.KNIFE.pattern())){
+                UUID id = extractUuid(Patterns.KNIFE, path);
+                knifeController.patchKnife(id, jsonb.fromJson(request.getReader(), PatchKnifeRequest.class));
+                return;
+            }else if(path.matches(Patterns.CATEGORY.pattern())){
+                UUID id = extractUuid(Patterns.CATEGORY, path);
+                categoryController.patchCategory(id, jsonb.fromJson(request.getReader(), PatchCategoryRequest.class));
                 return;
             }
         }

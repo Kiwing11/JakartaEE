@@ -4,7 +4,9 @@
     <featureManager>
         <feature>servlet-6.0</feature>
         <feature>jsonb-3.0</feature>
+        <feature>cdi-4.0</feature>
     </featureManager>
     <httpEndpoint id="defaultHttpEndpoint"
-                  httpPort="9082"/>
+                  httpPort="9082"
+                  httpsPort="9445" />
 </server>

@@ -1,8 +1,7 @@
-package pl.edu.pg.eti.kask.store.knife.entity;
+package pl.edu.pg.eti.kask.store.knife.dto;
 
 import lombok.*;
 
-import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
@@ -12,7 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
-public class Category implements Serializable {
+public class GetCategoryResponse {
     private UUID id;
     private String name;
     private String description;

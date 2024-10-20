@@ -1,0 +1,160 @@
+#GET ALL KNIVES
+GET http://localhost:9082/knife-store/api/knives
+
+###
+
+#GET SINGLE KNIFE
+
+GET http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c9
+
+###
+
+#GET NON EXISTING KNIFE - 404 NOT FOUND
+
+GET http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c0
+
+###
+
+#CREATE KNIFE
+
+PUT http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c9
+Content-Type: application/json
+
+{
+  "name": "TestKnife",
+  "bladeLength": 10.0,
+  "productionDate": "2020-01-01",
+  "category": "c4804e0f-769e-4ab9-9ebe-0578fb4f00b1",
+  "user": "c4804e0f-769e-4ab9-9ebe-0578fb4f00a1"
+}
+
+###
+
+#UPDATE KNIFE
+
+PATCH http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c9
+Content-Type: application/json
+
+{
+  "name": "TestKnifeUpdated",
+  "bladeLength": 20.0,
+  "productionDate": "2020-01-01",
+  "category": "c4804e0f-769e-4ab9-9ebe-0578fb4f00b1"
+}
+
+###
+
+#TRY TO UDATE NOT EXISTING KNIFE
+PATCH http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c0
+Content-Type: application/json
+
+{
+  "name": "TestKnifeUpdated",
+  "bladeLength": 20.0,
+  "productionDate": "2020-01-01",
+  "category": "c4804e0f-769e-4ab9-9ebe-0578fb4f00b1"
+}
+
+###
+
+#GET UPDATED KNIFE
+
+GET http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c9
+
+###
+
+#GET ALL CATEGORIES
+
+GET http://localhost:9082/knife-store/api/categories
+
+###
+
+#GET CATEGORY
+
+GET http://localhost:9082/knife-store/api/categories/c4804e0f-769e-4ab9-9ebe-0578fb4f00b1
+
+###
+
+#GET CATEGORY KNIVES
+
+GET http://localhost:9082/knife-store/api/categories/c4804e0f-769e-4ab9-9ebe-0578fb4f00b1/knives
+
+###
+
+#GET CATEGORY KNIVES - NOT EXISTING CATEGORY
+
+GET http://localhost:9082/knife-store/api/categories/c4804e0f-769e-4ab9-9ebe-0578fb4f00b0/knives
+
+###
+
+#GET USER KNIVES
+
+GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a1/knives
+
+###
+
+#GET NON EXISTING USER's KNIVES
+
+GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0/knives
+
+###
+
+#DELETE CATEGORY
+
+DELETE http://localhost:9082/knife-store/api/categories/c4804e0f-769e-4ab9-9ebe-0578fb4f00b1
+
+###
+
+#CREATE CATEGORY
+
+PUT http://localhost:9082/knife-store/api/categories/c4804e0f-769e-4ab9-9ebe-0578fb4f00b9
+Content-Type: application/json
+
+{
+  "name": "New Knife Category",
+  "description": "Great knives"
+}
+
+###
+#UPDATE CATEGORY
+
+PATCH http://localhost:9082/knife-store/api/categories/c4804e0f-769e-4ab9-9ebe-0578fb4f00b9
+Content-Type: application/json
+
+{
+  "name": "Updated Knife Category",
+  "description": "Better knives"
+}
+
+###
+#TRY TO UPDATE NON EXISTING CATEGORY
+
+PATCH http://localhost:9082/knife-store/api/categories/c4804e0f-769e-4ab9-9ebe-0578fb4f00b0
+Content-Type: application/json
+
+{
+  "name": "Updated Knife Category",
+  "description": "Better knives"
+}
+
+###
+
+#CREATE KNIFE ASSOCIATED WITH THE NEW CATEGORY
+
+PUT http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c8
+Content-Type: application/json
+
+{
+  "name": "TestKnife",
+  "bladeLength": 10.0,
+  "productionDate": "2020-01-01",
+  "category": "c4804e0f-769e-4ab9-9ebe-0578fb4f00b9",
+  "user": "c4804e0f-769e-4ab9-9ebe-0578fb4f00a1"
+}
+
+###
+
+#GET NEW CATEGORY KNIVES
+
+GET http://localhost:9082/knife-store/api/categories/c4804e0f-769e-4ab9-9ebe-0578fb4f00b9/knives
+

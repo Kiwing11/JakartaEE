@@ -1,11 +1,13 @@
 package pl.edu.pg.eti.kask.store.serialization.component;
 
+import jakarta.enterprise.context.Dependent;
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
 
 import java.io.*;
 
 @Log
+@Dependent
 public class CloningUtility {
     @SneakyThrows
     @SuppressWarnings("unchecked")

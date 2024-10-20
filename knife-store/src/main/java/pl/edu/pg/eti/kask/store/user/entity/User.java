@@ -13,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
+@EqualsAndHashCode
 public class User implements Serializable {
     private UUID id;
     private String login;

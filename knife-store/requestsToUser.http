@@ -6,7 +6,7 @@ GET http://localhost:9082/knife-store/api/users
 
 #GET USER
 
-GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a6
+GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a1
 
 ###
 
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 #UPDATE USER
 
-PATCH http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a6
+PATCH http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a1
 Content-Type: application/json
 
 {
@@ -59,7 +59,7 @@ Content-Type: application/json
 
 #DELETE USER
 
-DELETE http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a6
+DELETE http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a1
 
 ###
 
@@ -104,7 +104,7 @@ GET http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b6
 
 #GET USER's PHOTO
 
-GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a6/photo
+GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a1/photo
 
 ###
 

@@ -1,5 +1,8 @@
 package pl.edu.pg.eti.kask.store.service;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import lombok.NoArgsConstructor;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.*;
@@ -7,11 +10,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
+@ApplicationScoped
 public class PhotoService {
     private final Path photoDirectory;
 
-    public PhotoService(String photoDirectory) {
-        this.photoDirectory = Paths.get(photoDirectory);
+    public PhotoService() {
+        this.photoDirectory = Paths.get("D:\\Sem7\\Jakarta_EE\\knife-store\\src\\main\\resources");
         try {
             Files.createDirectories(this.photoDirectory);
         } catch (IOException e) {

@@ -1,5 +1,7 @@
 package pl.edu.pg.eti.kask.store.user.repository.memory;
 
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import pl.edu.pg.eti.kask.store.datastore.component.DataStore;
 import pl.edu.pg.eti.kask.store.user.entity.User;
 import pl.edu.pg.eti.kask.store.user.repository.api.UserRepository;
@@ -8,10 +10,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@RequestScoped
 public class UserInMemoryRepository implements UserRepository {
 
     private final DataStore store;
 
+    @Inject
     public UserInMemoryRepository(DataStore store) {
         this.store = store;
     }
