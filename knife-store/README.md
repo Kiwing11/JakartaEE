@@ -1,6 +1,6 @@
 # KITCHEN STORE 
 
-### Categories of knifes
+### Categories of knives
 - Japanese
 - Chinese
 - Thai

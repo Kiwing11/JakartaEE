@@ -5,7 +5,7 @@ GET http://localhost:9082/knife-store/api/knives
 
 #GET SINGLE KNIFE
 
-GET http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c9
+GET http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c1
 
 ###
 

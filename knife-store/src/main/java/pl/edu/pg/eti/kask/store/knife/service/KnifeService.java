@@ -51,6 +51,10 @@ public class KnifeService {
         knifeRepository.delete(knife);
     }
 
+    public void delete(UUID id){
+        knifeRepository.delete(knifeRepository.find(id).orElseThrow());
+    }
+
     public Optional<List<Knife>> findAllByCategory(UUID id) {
         return categoryRepository.find(id).map(knifeRepository::findAllByCategory);
     }

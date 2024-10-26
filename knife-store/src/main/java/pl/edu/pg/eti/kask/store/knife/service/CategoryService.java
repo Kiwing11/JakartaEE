@@ -39,4 +39,8 @@ public class CategoryService {
     public void delete(Category category){
         repository.delete(category);
     }
+
+    public void delete(UUID id){
+        repository.delete(repository.find(id).orElseThrow());
+    }
 }
