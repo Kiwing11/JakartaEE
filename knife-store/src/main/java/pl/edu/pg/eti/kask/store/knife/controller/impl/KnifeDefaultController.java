@@ -2,7 +2,14 @@ package pl.edu.pg.eti.kask.store.knife.controller.impl;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriInfo;
+import lombok.SneakyThrows;
 import pl.edu.pg.eti.kask.store.controller.servlet.exception.BadRequestException;
 import pl.edu.pg.eti.kask.store.factory.DtoFunctionFactory;
 import pl.edu.pg.eti.kask.store.knife.controller.api.KnifeController;
@@ -21,10 +28,20 @@ public class KnifeDefaultController implements KnifeController {
 
     private final DtoFunctionFactory factory;
 
+    private final UriInfo uriInfo;
+
+    private HttpServletResponse response;
+
+    @Context
+    public void setResponse(HttpServletResponse response) {
+        this.response = response;
+    }
+
     @Inject
-    public KnifeDefaultController(KnifeService service, DtoFunctionFactory factory) {
+    public KnifeDefaultController(KnifeService service, DtoFunctionFactory factory, @SuppressWarnings("CdiInjectionPointsInspection") UriInfo uriInfo) {
         this.service = service;
         this.factory = factory;
+        this.uriInfo = uriInfo;
     }
 
     @Override
@@ -48,9 +65,16 @@ public class KnifeDefaultController implements KnifeController {
     }
 
     @Override
+    @SneakyThrows
     public void putKnife(UUID id, PutKnifeRequest request){
         try{
             service.create(factory.requestToKnife().apply(id, request));
+            response.setHeader("Location", uriInfo.getBaseUriBuilder()
+                    .path(KnifeController.class, "getKnife")
+                    .build(id)
+                    .toString()
+            );
+            throw new WebApplicationException(Response.Status.CREATED);
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }

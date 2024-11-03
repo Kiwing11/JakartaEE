@@ -2,7 +2,13 @@ package pl.edu.pg.eti.kask.store.knife.controller.impl;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriInfo;
+import lombok.SneakyThrows;
 import pl.edu.pg.eti.kask.store.controller.servlet.exception.BadRequestException;
 import pl.edu.pg.eti.kask.store.factory.DtoFunctionFactory;
 import pl.edu.pg.eti.kask.store.knife.controller.api.CategoryController;
@@ -22,10 +28,21 @@ public class CategoryDefaultController implements CategoryController {
 
     private final DtoFunctionFactory factory;
 
+    private final UriInfo uriInfo;
+
+    private HttpServletResponse response;
+
+    @Context
+    public void setResponse(HttpServletResponse response) {
+        //ATM in this implementation only HttpServletRequest can be injected with CDI so JAX-RS injection is used.
+        this.response = response;
+    }
+
     @Inject
-    public CategoryDefaultController(CategoryService service, DtoFunctionFactory factory) {
+    public CategoryDefaultController(CategoryService service, DtoFunctionFactory factory, @SuppressWarnings("CdiInjectionPointsInspection") UriInfo uriInfo) {
         this.service = service;
         this.factory = factory;
+        this.uriInfo = uriInfo;
     }
 
     @Override
@@ -41,9 +58,16 @@ public class CategoryDefaultController implements CategoryController {
     }
 
     @Override
+    @SneakyThrows
     public void putCategory(UUID id, PutCategoryRequest request) {
         try {
             service.create(factory.requestToCategory().apply(id, request));
+            response.setHeader("Location", uriInfo.getBaseUriBuilder()
+                    .path(CategoryController.class, "getCategory")
+                    .build(id)
+                    .toString()
+            );
+            throw new WebApplicationException(Response.Status.CREATED);
         } catch (IllegalArgumentException e){
             throw new BadRequestException(e);
         }
