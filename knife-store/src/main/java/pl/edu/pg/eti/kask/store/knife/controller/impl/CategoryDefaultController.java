@@ -2,6 +2,7 @@ package pl.edu.pg.eti.kask.store.knife.controller.impl;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.Path;
 import pl.edu.pg.eti.kask.store.controller.servlet.exception.BadRequestException;
 import pl.edu.pg.eti.kask.store.factory.DtoFunctionFactory;
 import pl.edu.pg.eti.kask.store.knife.controller.api.CategoryController;
@@ -14,7 +15,7 @@ import pl.edu.pg.eti.kask.store.controller.servlet.exception.NotFoundException;
 
 import java.util.UUID;
 
-@RequestScoped
+@Path("")
 public class CategoryDefaultController implements CategoryController {
 
     private final CategoryService service;
