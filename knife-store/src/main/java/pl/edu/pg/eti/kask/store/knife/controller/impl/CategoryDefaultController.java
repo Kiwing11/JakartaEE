@@ -1,6 +1,5 @@
 package pl.edu.pg.eti.kask.store.knife.controller.impl;
 
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.Path;
@@ -9,7 +8,8 @@ import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
 import lombok.SneakyThrows;
-import pl.edu.pg.eti.kask.store.controller.servlet.exception.BadRequestException;
+import jakarta.ws.rs.BadRequestException;
+import jakarta.ws.rs.NotFoundException;
 import pl.edu.pg.eti.kask.store.factory.DtoFunctionFactory;
 import pl.edu.pg.eti.kask.store.knife.controller.api.CategoryController;
 import pl.edu.pg.eti.kask.store.knife.dto.GetCategoriesResponse;
@@ -17,7 +17,6 @@ import pl.edu.pg.eti.kask.store.knife.dto.GetCategoryResponse;
 import pl.edu.pg.eti.kask.store.knife.dto.PatchCategoryRequest;
 import pl.edu.pg.eti.kask.store.knife.dto.PutCategoryRequest;
 import pl.edu.pg.eti.kask.store.knife.service.CategoryService;
-import pl.edu.pg.eti.kask.store.controller.servlet.exception.NotFoundException;
 
 import java.util.UUID;
 
