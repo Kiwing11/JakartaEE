@@ -16,6 +16,7 @@ import pl.edu.pg.eti.kask.store.knife.dto.GetKnifeResponse;
 import pl.edu.pg.eti.kask.store.knife.dto.GetKnivesResponse;
 import pl.edu.pg.eti.kask.store.knife.dto.PatchKnifeRequest;
 import pl.edu.pg.eti.kask.store.knife.dto.PutKnifeRequest;
+import pl.edu.pg.eti.kask.store.knife.service.CategoryService;
 import pl.edu.pg.eti.kask.store.knife.service.KnifeService;
 
 import java.util.UUID;
@@ -23,6 +24,8 @@ import java.util.UUID;
 @Path("")
 public class KnifeDefaultController implements KnifeController {
     private final KnifeService service;
+
+    private final CategoryService categoryService;
 
     private final DtoFunctionFactory factory;
 
@@ -36,10 +39,11 @@ public class KnifeDefaultController implements KnifeController {
     }
 
     @Inject
-    public KnifeDefaultController(KnifeService service, DtoFunctionFactory factory, @SuppressWarnings("CdiInjectionPointsInspection") UriInfo uriInfo) {
+    public KnifeDefaultController(KnifeService service, CategoryService categoryService, DtoFunctionFactory factory, @SuppressWarnings("CdiInjectionPointsInspection") UriInfo uriInfo) {
         this.service = service;
         this.factory = factory;
         this.uriInfo = uriInfo;
+        this.categoryService = categoryService;
     }
 
     @Override
@@ -73,6 +77,30 @@ public class KnifeDefaultController implements KnifeController {
                     .toString()
             );
             throw new WebApplicationException(Response.Status.CREATED);
+        } catch (IllegalArgumentException e) {
+            throw new BadRequestException(e);
+        }
+    }
+
+    @Override
+    @SneakyThrows
+    public void putKnifeByCategory(UUID categoryId, UUID knifeId, PutKnifeRequest request){
+        try{
+            categoryService.find(categoryId).ifPresentOrElse(
+                    category -> {
+                        request.setCategory(categoryId);
+                        service.create(factory.requestToKnife().apply(knifeId, request));
+                        response.setHeader("Location", uriInfo.getBaseUriBuilder()
+                                .path(KnifeController.class, "getKnife")
+                                .build(knifeId)
+                                .toString()
+                        );
+                        throw new WebApplicationException(Response.Status.CREATED);
+                    },
+                    () -> {
+                        throw new NotFoundException();
+                    }
+            );
         } catch (IllegalArgumentException e) {
             throw new BadRequestException(e);
         }

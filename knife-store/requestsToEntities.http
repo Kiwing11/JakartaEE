@@ -29,6 +29,19 @@ Content-Type: application/json
 }
 
 ###
+#CREATE KNIFE ASSOCIATED WITH EXISTING CATEGORY - NEW LAB4
+
+PUT http://localhost:9082/knife-store/api/categories/c4804e0f-769e-4ab9-9ebe-0578fb4f00b1/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c9
+Content-Type: application/json
+
+{
+  "name": "TestKnife",
+  "bladeLength": 10.0,
+  "productionDate": "2020-01-01",
+  "user": "c4804e0f-769e-4ab9-9ebe-0578fb4f00a1"
+}
+
+###
 
 #UPDATE KNIFE
 
