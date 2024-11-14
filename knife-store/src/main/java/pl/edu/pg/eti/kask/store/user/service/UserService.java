@@ -2,6 +2,7 @@ package pl.edu.pg.eti.kask.store.user.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import lombok.NoArgsConstructor;
 import pl.edu.pg.eti.kask.store.user.entity.User;
 import pl.edu.pg.eti.kask.store.user.repository.api.UserRepository;
@@ -30,14 +31,17 @@ public class UserService {
         return repository.findAll();
     }
 
+    @Transactional
     public void create(User user){
         repository.create(user);
     }
 
+    @Transactional
     public void delete(UUID id){
         repository.delete(repository.find(id).orElseThrow());
     }
 
+    @Transactional
     public void update(User user){
         repository.update(user);
     }

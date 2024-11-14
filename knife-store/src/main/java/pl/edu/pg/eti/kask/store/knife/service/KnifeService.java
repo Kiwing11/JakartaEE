@@ -2,6 +2,7 @@ package pl.edu.pg.eti.kask.store.knife.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import lombok.NoArgsConstructor;
 import pl.edu.pg.eti.kask.store.knife.entity.Knife;
 import pl.edu.pg.eti.kask.store.knife.repository.api.CategoryRepository;
@@ -21,7 +22,7 @@ public class KnifeService {
     private final UserRepository userRepository;
 
     @Inject
-    public KnifeService(KnifeRepository knifeRepository, CategoryRepository categoryRepository, UserRepository userRepository) {
+    public KnifeService(KnifeRepository knifeRepository, CategoryRepository categoryRepository, UserRepository userRepository, CategoryService categoryService) {
         this.knifeRepository = knifeRepository;
         this.categoryRepository = categoryRepository;
         this.userRepository = userRepository;
@@ -39,18 +40,28 @@ public class KnifeService {
         return knifeRepository.findAll();
     }
 
+    @Transactional
     public void create(Knife knife){
+//        if(knifeRepository.find(knife.getId()).isPresent()){
+//            throw new IllegalArgumentException("Knife with given id already exists");
+//        }
+//        if(knifeRepository.find(knife.getCategory().getId()).isEmpty()){
+//            throw new IllegalArgumentException("Category does not exist");
+//        }
         knifeRepository.create(knife);
     }
 
+    @Transactional
     public void update(Knife knife){
         knifeRepository.update(knife);
     }
 
+    @Transactional
     public void delete(Knife knife){
         knifeRepository.delete(knife);
     }
 
+    @Transactional
     public void delete(UUID id){
         knifeRepository.delete(knifeRepository.find(id).orElseThrow());
     }

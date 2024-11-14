@@ -2,6 +2,7 @@ package pl.edu.pg.eti.kask.store.knife.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import lombok.NoArgsConstructor;
 import pl.edu.pg.eti.kask.store.knife.entity.Category;
 import pl.edu.pg.eti.kask.store.knife.repository.api.CategoryRepository;
@@ -28,6 +29,7 @@ public class CategoryService {
         return repository.findAll();
     }
 
+    @Transactional
     public void create(Category category){
         repository.create(category);
     }
@@ -36,10 +38,12 @@ public class CategoryService {
         repository.update(category);
     }
 
+    @Transactional
     public void delete(Category category){
         repository.delete(category);
     }
 
+    @Transactional
     public void delete(UUID id){
         repository.delete(repository.find(id).orElseThrow());
     }
