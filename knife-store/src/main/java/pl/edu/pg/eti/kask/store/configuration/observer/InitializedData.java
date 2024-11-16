@@ -87,6 +87,7 @@ public class InitializedData implements ServletContextListener {
                 .build();
 
         userService.create(zbigniew);
+        System.out.println("User created: " + zbigniew);
         userService.create(jacek);
         userService.create(mariusz);
         userService.create(blazej);

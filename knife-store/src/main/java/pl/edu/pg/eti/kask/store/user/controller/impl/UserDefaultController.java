@@ -4,6 +4,7 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.BadRequestException;
 import jakarta.ws.rs.NotFoundException;
+import jakarta.ws.rs.Path;
 import pl.edu.pg.eti.kask.store.factory.DtoFunctionFactory;
 import pl.edu.pg.eti.kask.store.user.controller.api.UserController;
 import pl.edu.pg.eti.kask.store.user.dto.GetUserResponse;
@@ -16,7 +17,7 @@ import pl.edu.pg.eti.kask.store.user.service.UserService;
 import java.io.InputStream;
 import java.util.UUID;
 
-@RequestScoped
+@Path("")
 public class UserDefaultController implements UserController {
     private final UserService service;
     private final DtoFunctionFactory factory;

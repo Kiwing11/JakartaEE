@@ -1,29 +1,56 @@
 package pl.edu.pg.eti.kask.store.user.controller.api;
 
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 import pl.edu.pg.eti.kask.store.user.dto.GetUserResponse;
 import pl.edu.pg.eti.kask.store.user.dto.GetUsersResponse;
 import pl.edu.pg.eti.kask.store.user.dto.PatchUserRequest;
 import pl.edu.pg.eti.kask.store.user.dto.PutUserRequest;
-import pl.edu.pg.eti.kask.store.user.entity.User;
-
-import java.io.InputStream;
-import java.util.List;
 import java.util.UUID;
 
+@Path("")
 public interface UserController {
-    GetUserResponse getUser(UUID id);
+
+    @GET
+    @Path("/users/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    GetUserResponse getUser(@PathParam("id") UUID id);
+
+    @GET
+    @Path("/users")
+    @Produces(MediaType.APPLICATION_JSON)
     GetUsersResponse getUsers();
-    void putUser(UUID id, PutUserRequest request);
 
-    void deleteUser(UUID id);
+    @PUT
+    @Path("/users/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    void putUser(@PathParam("id") UUID id, PutUserRequest request);
 
-    void patchUser(UUID id, PatchUserRequest request);
+    @DELETE
+    @Path("/users/{id}")
+    void deleteUser(@PathParam("id") UUID id);
 
-    String getUserPhoto(UUID id);
+    @PATCH
+    @Path("/users/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    void patchUser(@PathParam("id") UUID id, PatchUserRequest request);
 
-    void putUserPhoto(UUID id, String photoPath);
+    @GET
+    @Path("/users/{id}/photo")
+    @Produces(MediaType.APPLICATION_JSON)
+    String getUserPhoto(@PathParam("id") UUID id);
 
-    void patchUserPhoto(UUID id, String photoPath);
+    @PUT
+    @Path("/users/{id}/photo")
+    @Consumes(MediaType.APPLICATION_JSON)
+    void putUserPhoto(@PathParam("id") UUID id, String photoPath);
 
-    void deleteUserPhoto(UUID id);
+    @PATCH
+    @Path("/users/{id}/photo")
+    @Consumes(MediaType.APPLICATION_JSON)
+    void patchUserPhoto(@PathParam("id") UUID id, String photoPath);
+
+    @DELETE
+    @Path("/users/{id}/photo")
+    void deleteUserPhoto(@PathParam("id") UUID id);
 }

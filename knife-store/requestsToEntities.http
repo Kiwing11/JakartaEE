@@ -76,7 +76,7 @@ GET http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4
 
 ###
 
-#GET ALL CATEGORIES
+#GET ALL CATEGORIESc
 
 GET http://localhost:9082/knife-store/api/categories
 
