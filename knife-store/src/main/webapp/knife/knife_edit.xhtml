@@ -24,6 +24,25 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-4 p-2">
+                        <div class="form-outline">
+                            <h:inputText id="bladeLength" value="#{knifeEdit.knife.bladeLength}" styleClass="form-control"/>
+                            <h:outputLabel for="bladeLength" value="Blade Length:" styleClass="form-label"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4 p-2">
+                        <div class="form-outline">
+                            <h:inputText id="productionDate" value="#{knifeEdit.knife.productionDate}" styleClass="form-control" type="date" converter="localDateConverter">
+                            </h:inputText>
+                            <h:outputLabel for="productionDate" value="Production Date:" styleClass="form-label"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-2 p-2 text-center">
                         <h:commandButton styleClass="btn btn-primary" value="Update"
                                          action="#{knifeEdit.saveAction()}"/>
