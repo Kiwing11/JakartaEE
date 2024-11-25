@@ -38,7 +38,7 @@ public interface UserController {
     @GET
     @Path("/users/{id}/photo")
     @Produces(MediaType.APPLICATION_JSON)
-    String getUserPhoto(@PathParam("id") UUID id);
+    byte[] getUserPhoto(@PathParam("id") UUID id);
 
     @PUT
     @Path("/users/{id}/photo")

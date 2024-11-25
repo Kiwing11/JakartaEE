@@ -1,5 +1,6 @@
 package pl.edu.pg.eti.kask.store.knife.view;
 
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.Conversation;
 import jakarta.enterprise.context.ConversationScoped;
 import jakarta.inject.Inject;
@@ -20,7 +21,7 @@ import java.util.UUID;
 @NoArgsConstructor(force = true)
 public class CategoryCreate implements Serializable {
 
-    private final CategoryService service;
+    private CategoryService service;
 
     private final ModelFunctionFactory factory;
 
@@ -31,11 +32,9 @@ public class CategoryCreate implements Serializable {
 
     @Inject
     public CategoryCreate(
-            CategoryService service,
             ModelFunctionFactory factory,
             Conversation conversation
     ) {
-        this.service = service;
         this.factory = factory;
         this.conversation = conversation;
     }
@@ -47,6 +46,11 @@ public class CategoryCreate implements Serializable {
                     .build();
             conversation.begin();
         }
+    }
+
+    @EJB
+    public void setService(CategoryService service) {
+        this.service = service;
     }
 
     public Object goToBasicAction() {

@@ -1,5 +1,7 @@
 package pl.edu.pg.eti.kask.store.knife.controller.impl;
 
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.ejb.EJB;
 import jakarta.inject.Inject;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.Path;
@@ -10,6 +12,7 @@ import jakarta.ws.rs.core.UriInfo;
 import lombok.SneakyThrows;
 import jakarta.ws.rs.BadRequestException;
 import jakarta.ws.rs.NotFoundException;
+import lombok.extern.java.Log;
 import pl.edu.pg.eti.kask.store.factory.DtoFunctionFactory;
 import pl.edu.pg.eti.kask.store.knife.controller.api.KnifeController;
 import pl.edu.pg.eti.kask.store.knife.dto.GetKnifeResponse;
@@ -18,14 +21,17 @@ import pl.edu.pg.eti.kask.store.knife.dto.PatchKnifeRequest;
 import pl.edu.pg.eti.kask.store.knife.dto.PutKnifeRequest;
 import pl.edu.pg.eti.kask.store.knife.service.CategoryService;
 import pl.edu.pg.eti.kask.store.knife.service.KnifeService;
+import pl.edu.pg.eti.kask.store.user.entity.UserRoles;
 
 import java.util.UUID;
 
 @Path("")
+@Log
+@RolesAllowed(UserRoles.USER)
 public class KnifeDefaultController implements KnifeController {
-    private final KnifeService service;
+    private KnifeService service;
 
-    private final CategoryService categoryService;
+    private CategoryService categoryService;
 
     private final DtoFunctionFactory factory;
 
@@ -39,10 +45,18 @@ public class KnifeDefaultController implements KnifeController {
     }
 
     @Inject
-    public KnifeDefaultController(KnifeService service, CategoryService categoryService, DtoFunctionFactory factory, @SuppressWarnings("CdiInjectionPointsInspection") UriInfo uriInfo) {
-        this.service = service;
+    public KnifeDefaultController(DtoFunctionFactory factory, @SuppressWarnings("CdiInjectionPointsInspection") UriInfo uriInfo) {
         this.factory = factory;
         this.uriInfo = uriInfo;
+    }
+
+    @EJB
+    public void setService(KnifeService service) {
+        this.service = service;
+    }
+
+    @EJB
+    public void setCategoryService(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
@@ -71,6 +85,22 @@ public class KnifeDefaultController implements KnifeController {
     public void putKnife(UUID id, PutKnifeRequest request){
         try{
             service.create(factory.requestToKnife().apply(id, request));
+            response.setHeader("Location", uriInfo.getBaseUriBuilder()
+                    .path(KnifeController.class, "getKnife")
+                    .build(id)
+                    .toString()
+            );
+            throw new WebApplicationException(Response.Status.CREATED);
+        } catch (IllegalArgumentException e) {
+            throw new BadRequestException(e);
+        }
+    }
+
+    @Override
+    @SneakyThrows
+    public void putKnife(UUID id, UUID userId, PutKnifeRequest request){
+        try{
+            service.createForCallerPrincipal(factory.requestToKnife().apply(id, request));
             response.setHeader("Location", uriInfo.getBaseUriBuilder()
                     .path(KnifeController.class, "getKnife")
                     .build(id)

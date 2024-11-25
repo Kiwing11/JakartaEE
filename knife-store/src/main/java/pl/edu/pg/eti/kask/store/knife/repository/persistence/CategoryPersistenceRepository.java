@@ -1,5 +1,6 @@
 package pl.edu.pg.eti.kask.store.knife.repository.persistence;
 
+import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@RequestScoped
+@Dependent
 public class CategoryPersistenceRepository implements CategoryRepository {
     private EntityManager em;
 
@@ -42,6 +43,7 @@ public class CategoryPersistenceRepository implements CategoryRepository {
 
     @Override
     public void update(Category entity) {
+        em.refresh(em.find(Category.class, entity.getId()));
         em.merge(entity);
     }
 }

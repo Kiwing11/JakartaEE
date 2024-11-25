@@ -1,5 +1,6 @@
 package pl.edu.pg.eti.kask.store.knife.view;
 
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -10,7 +11,7 @@ import pl.edu.pg.eti.kask.store.knife.service.CategoryService;
 @RequestScoped
 @Named
 public class CategoryList {
-    private final CategoryService service;
+    private CategoryService service;
 
     private CategoriesModel categories;
 
@@ -18,8 +19,12 @@ public class CategoryList {
 
     @Inject
     public CategoryList(CategoryService service, ModelFunctionFactory factory) {
-        this.service = service;
         this.factory = factory;
+    }
+
+    @EJB
+    public void setService(CategoryService service) {
+        this.service = service;
     }
 
     public CategoriesModel getCategories() {

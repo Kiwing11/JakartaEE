@@ -15,6 +15,7 @@ public class PutUserRequest {
     private String login;
     private String name;
     private String surname;
+    private String email;
     private String password;
     private LocalDate birthDate;
 }

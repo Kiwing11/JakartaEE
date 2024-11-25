@@ -23,4 +23,8 @@ public interface UserRepository extends Repository<User, UUID> {
 
     @Override
     void update(User entity);
+
+    Optional<User> findByEmail(String email);
+
+    Optional<User> findByLogin(String login);
 }

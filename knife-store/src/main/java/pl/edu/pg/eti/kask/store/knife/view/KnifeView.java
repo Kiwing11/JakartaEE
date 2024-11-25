@@ -1,5 +1,6 @@
 package pl.edu.pg.eti.kask.store.knife.view;
 
+import jakarta.ejb.EJB;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
@@ -24,38 +25,25 @@ import java.util.UUID;
 @Named
 public class KnifeView implements Serializable {
 
-    /**
-     * Service for managing knives.
-     */
-    private final KnifeService service;
+    private KnifeService service;
 
-    /**
-     * Factory producing functions for conversion between models and entities.
-     */
     private final ModelFunctionFactory factory;
 
-    /**
-     * Knife id.
-     */
     @Setter
     @Getter
     private UUID id;
 
-    /**
-     * Knife exposed to the view.
-     */
     @Getter
     private KnifeModel knife;
 
-
-    /**
-     * @param service service for managing knives
-     * @param factory factory producing functions for conversion between models and entities
-     */
     @Inject
-    public KnifeView(KnifeService service, ModelFunctionFactory factory) {
-        this.service = service;
+    public KnifeView(ModelFunctionFactory factory) {
         this.factory = factory;
+    }
+
+    @EJB
+    public void setService(KnifeService service) {
+        this.service = service;
     }
 
     /**

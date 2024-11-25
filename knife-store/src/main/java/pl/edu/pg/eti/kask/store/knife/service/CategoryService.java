@@ -1,18 +1,25 @@
 package pl.edu.pg.eti.kask.store.knife.service;
 
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.ejb.LocalBean;
+import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.transaction.Transactional;
 import lombok.NoArgsConstructor;
+import lombok.extern.java.Log;
 import pl.edu.pg.eti.kask.store.knife.entity.Category;
 import pl.edu.pg.eti.kask.store.knife.repository.api.CategoryRepository;
+import pl.edu.pg.eti.kask.store.user.entity.UserRoles;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@ApplicationScoped
+@LocalBean
+@Stateless
 @NoArgsConstructor(force = true)
+@Log
 public class CategoryService {
     private final CategoryRepository repository;
 
@@ -25,25 +32,27 @@ public class CategoryService {
         return repository.find(id);
     }
 
+    @PermitAll
     public List<Category> findAll(){
         return repository.findAll();
     }
 
-    @Transactional
+    @RolesAllowed(UserRoles.ADMIN)
     public void create(Category category){
         repository.create(category);
     }
 
+    @RolesAllowed(UserRoles.ADMIN)
     public void update(Category category){
         repository.update(category);
     }
 
-    @Transactional
+    @RolesAllowed(UserRoles.ADMIN)
     public void delete(Category category){
         repository.delete(category);
     }
 
-    @Transactional
+    @RolesAllowed(UserRoles.ADMIN)
     public void delete(UUID id){
         repository.delete(repository.find(id).orElseThrow());
     }

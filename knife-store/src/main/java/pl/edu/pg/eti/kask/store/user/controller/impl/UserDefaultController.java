@@ -1,10 +1,17 @@
 package pl.edu.pg.eti.kask.store.user.controller.impl;
 
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.ejb.EJBException;
 import jakarta.inject.Inject;
+import jakarta.ejb.EJB;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.BadRequestException;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriInfo;
+import lombok.extern.java.Log;
 import pl.edu.pg.eti.kask.store.factory.DtoFunctionFactory;
 import pl.edu.pg.eti.kask.store.user.controller.api.UserController;
 import pl.edu.pg.eti.kask.store.user.dto.GetUserResponse;
@@ -16,16 +23,31 @@ import pl.edu.pg.eti.kask.store.user.service.UserService;
 
 import java.io.InputStream;
 import java.util.UUID;
+import java.util.logging.Level;
 
 @Path("")
+@Log
 public class UserDefaultController implements UserController {
-    private final UserService service;
+    private UserService service;
     private final DtoFunctionFactory factory;
+    private final UriInfo uriInfo;
+    private HttpServletResponse response;
+
+    @Context
+    public void setResponse(HttpServletResponse response) {
+        //JAX-RS injection
+        this.response = response;
+    }
+
+    @EJB
+    public void setService(UserService service) {
+        this.service = service;
+    }
 
     @Inject
-    public UserDefaultController(UserService userService, DtoFunctionFactory dtoFunctionFactory) {
-        this.service = userService;
+    public UserDefaultController(DtoFunctionFactory dtoFunctionFactory, UriInfo uriInfo) {
         this.factory =  dtoFunctionFactory;
+        this.uriInfo = uriInfo;
     }
 
     @Override
@@ -42,11 +64,26 @@ public class UserDefaultController implements UserController {
 
     @Override
     public void putUser(UUID id,PutUserRequest request) {
+//        try {
+//            service.create(factory.requestToUser().apply(id, request));
+//        }
+//        catch (IllegalArgumentException e) {
+//            throw new BadRequestException(e);
+//        }
         try {
             service.create(factory.requestToUser().apply(id, request));
-        }
-        catch (IllegalArgumentException e) {
-            throw new BadRequestException(e);
+            response.setHeader("Location", uriInfo.getBaseUriBuilder()
+                    .path(UserController.class, "getUser")
+                    .build(id)
+                    .toString()
+            );
+            throw new WebApplicationException(Response.Status.CREATED);
+        } catch (EJBException e) {
+            if(e.getCause() instanceof IllegalArgumentException) {
+                log.log(Level.WARNING, e.getMessage(), e);
+                throw new BadRequestException(e);
+            }
+            throw e;
         }
     }
 
@@ -71,10 +108,11 @@ public class UserDefaultController implements UserController {
     }
 
     @Override
-    public String getUserPhoto(UUID id) {
-        return service.find(id)
+    public byte[] getUserPhoto(UUID id) {
+        String photoPath = service.find(id)
                 .map(User::getPhoto)
                 .orElseThrow(NotFoundException::new);
+        return service.getPhoto(photoPath);
     }
 
     @Override

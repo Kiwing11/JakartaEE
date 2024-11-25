@@ -1,5 +1,6 @@
 package pl.edu.pg.eti.kask.store.knife.view;
 
+import jakarta.ejb.EJB;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
@@ -21,7 +22,7 @@ import java.util.UUID;
 @Named
 public class CategoryEdit implements Serializable {
 
-    private final CategoryService service;
+    private CategoryService service;
 
     private final ModelFunctionFactory factory;
 
@@ -33,9 +34,13 @@ public class CategoryEdit implements Serializable {
     private CategoryEditModel category;
 
     @Inject
-    public CategoryEdit(CategoryService service, ModelFunctionFactory factory) {
-        this.service = service;
+    public CategoryEdit(ModelFunctionFactory factory) {
         this.factory = factory;
+    }
+
+    @EJB
+    public void setService(CategoryService service) {
+        this.service = service;
     }
 
     public void init() throws IOException {

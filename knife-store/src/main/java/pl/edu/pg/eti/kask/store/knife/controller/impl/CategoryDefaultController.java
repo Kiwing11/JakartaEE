@@ -1,5 +1,6 @@
 package pl.edu.pg.eti.kask.store.knife.controller.impl;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.Path;
@@ -17,6 +18,7 @@ import pl.edu.pg.eti.kask.store.knife.dto.GetCategoryResponse;
 import pl.edu.pg.eti.kask.store.knife.dto.PatchCategoryRequest;
 import pl.edu.pg.eti.kask.store.knife.dto.PutCategoryRequest;
 import pl.edu.pg.eti.kask.store.knife.service.CategoryService;
+import pl.edu.pg.eti.kask.store.user.entity.UserRoles;
 
 import java.util.UUID;
 
@@ -82,6 +84,7 @@ public class CategoryDefaultController implements CategoryController {
                 });
     }
 
+    @RolesAllowed(UserRoles.ADMIN)
     @Override
     public void deleteCategory(UUID id) {
         service.find(id)

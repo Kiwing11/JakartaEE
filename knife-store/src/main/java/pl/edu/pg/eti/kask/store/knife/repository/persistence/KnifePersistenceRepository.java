@@ -1,5 +1,6 @@
 package pl.edu.pg.eti.kask.store.knife.repository.persistence;
 
+import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@RequestScoped
+@Dependent
 public class KnifePersistenceRepository implements KnifeRepository {
 
     private EntityManager em;
@@ -36,11 +37,13 @@ public class KnifePersistenceRepository implements KnifeRepository {
     @Override
     public void create(Knife entity) {
         em.persist(entity);
+        em.refresh(em.find(Category.class, entity.getCategory().getId()));
     }
 
     @Override
     public void update(Knife entity) {
         em.merge(entity);
+        em.refresh(em.find(Category.class, entity.getCategory().getId()));
     }
 
     @Override
@@ -69,8 +72,9 @@ public class KnifePersistenceRepository implements KnifeRepository {
 
     @Override
     public List<Knife> findAllByCategory(Category category){
-        return em.createQuery("SELECT k FROM Knife k WHERE k.category = :category", Knife.class)
-                .setParameter("category", category)
-                .getResultList();
+//        return em.createQuery("SELECT k FROM Knife k WHERE k.category = :category", Knife.class)
+//                .setParameter("category", category)
+//                .getResultList();
+        return category.getKnives();
     }
 }

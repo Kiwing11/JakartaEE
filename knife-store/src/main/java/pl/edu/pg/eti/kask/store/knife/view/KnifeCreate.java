@@ -1,5 +1,6 @@
 package pl.edu.pg.eti.kask.store.knife.view;
 
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.Conversation;
 import jakarta.enterprise.context.ConversationScoped;
 import jakarta.inject.Inject;
@@ -32,12 +33,12 @@ public class KnifeCreate implements Serializable {
     /**
      * Service for managing knives.
      */
-    private final KnifeService knifeService;
+    private KnifeService knifeService;
 
     /**
      * Service for managing categorys.
      */
-    private final CategoryService categoryService;
+    private CategoryService categoryService;
 
     /**
      * Factory producing functions for conversion between models and entities.
@@ -63,15 +64,21 @@ public class KnifeCreate implements Serializable {
 
     @Inject
     public KnifeCreate(
-            KnifeService knifeService,
-            CategoryService categoryService,
             ModelFunctionFactory factory,
             Conversation conversation
     ) {
-        this.knifeService = knifeService;
         this.factory = factory;
-        this.categoryService = categoryService;
         this.conversation = conversation;
+    }
+
+    @EJB
+    public void setKnifeService(KnifeService knifeService) {
+        this.knifeService = knifeService;
+    }
+
+    @EJB
+    public void setCategoryService(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
     /**

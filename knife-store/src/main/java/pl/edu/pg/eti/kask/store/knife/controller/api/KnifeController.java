@@ -42,6 +42,11 @@ public interface KnifeController {
     @Consumes(MediaType.APPLICATION_JSON)
     void putKnifeByCategory(@PathParam("categoryId") UUID categoryId, @PathParam("knifeId") UUID knifeId, PutKnifeRequest request);
 
+    @PUT
+    @Path("/users/{userId}/knives/{knifeId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    void putKnife(@PathParam("knifeId") UUID id, @PathParam("userId") UUID userID, PutKnifeRequest request);
+
     @PATCH
     @Path("/knives/{id}")
     @Consumes({MediaType.APPLICATION_JSON})

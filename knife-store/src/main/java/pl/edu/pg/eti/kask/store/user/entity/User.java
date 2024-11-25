@@ -25,14 +25,21 @@ public class User implements Serializable {
     private String login;
     private String name;
     private String surname;
+    private String email;
     @ToString.Exclude
     private String password;
     @Column(name = "birth_date")
     private LocalDate birthDate;
+    @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private String photo;
 
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL})
     private List<Knife> knives;
+
+    @CollectionTable(name = "user__roles", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "role")
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
 }

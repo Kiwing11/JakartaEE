@@ -1,5 +1,6 @@
 package pl.edu.pg.eti.kask.store.knife.view;
 
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -16,40 +17,25 @@ import java.util.UUID;
 @Named
 public class KnifeList {
 
-    /**
-     * Service for managing knives.
-     */
-    private final KnifeService service;
+    private KnifeService service;
 
-    /**
-     * Knifes list exposed to the view.
-     */
     private KnivesModel knives;
 
-    /**
-     * Factory producing functions for conversion between models and entities.
-     */
     private final ModelFunctionFactory factory;
 
-    /**
-     * @param service knife service
-     * @param factory factory producing functions for conversion between models and entities
-     */
     @Inject
-    public KnifeList(KnifeService service, ModelFunctionFactory factory) {
-        this.service = service;
+    public KnifeList(ModelFunctionFactory factory) {
         this.factory = factory;
     }
 
-    /**
-     * In order to prevent calling service on different steps of JSF request lifecycle, model property is cached using
-     * lazy getter.
-     *
-     * @return all knives
-     */
+    @EJB
+    public void setService(KnifeService service) {
+        this.service = service;
+    }
+
     public KnivesModel getKnives() {
         if (knives == null) {
-            knives = factory.knivesToModel().apply(service.findAll());
+            knives = factory.knivesToModel().apply(service.findAllForCallerPrincipal());
         }
         return knives;
     }
@@ -62,12 +48,6 @@ public class KnifeList {
 
     }
 
-    /**
-     * Action for clicking delete action.
-     *
-     * @param knife knife to be removed
-     * @return navigation case to list_knives
-     */
     public String deleteAction(KnivesModel.Knife knife) {
         service.delete(knife.getId());
         return "knife_list?faces-redirect=true";

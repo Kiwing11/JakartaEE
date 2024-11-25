@@ -24,7 +24,7 @@ public class Knife implements Serializable {
     private String name;
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
