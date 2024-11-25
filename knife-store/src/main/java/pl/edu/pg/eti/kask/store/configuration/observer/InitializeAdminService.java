@@ -38,7 +38,7 @@ public class InitializeAdminService {
         if(userRepository.findByLogin("admin").isEmpty()){
             User admin = User.builder()
                     .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00a9"))
-                    .login("admin")
+                    .login("admin-service")
                     .name("Admin")
                     .surname("Service")
                     .birthDate(LocalDate.of(1990,10,21))

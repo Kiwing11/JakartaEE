@@ -82,13 +82,6 @@ public class UserService {
     }
 
     @PermitAll
-    public boolean verifyPassword(String email, String password){
-        return repository.findByEmail(email)
-                .map(user -> passwordHash.verify(password.toCharArray(), user.getPassword()))
-                .orElse(false);
-    }
-
-    @PermitAll
     public boolean verify(String login, String password){
         return repository.findByLogin(login)
                 .map(user -> passwordHash.verify(password.toCharArray(), user.getPassword()))

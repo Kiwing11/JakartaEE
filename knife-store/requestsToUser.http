@@ -1,5 +1,5 @@
 #ENCODED VALUES
-# admin:    YWRtaW46YWRtaW4=
+# admin:    YWRtaW4tc2VydmljZTphZG1pbg==
 # ztestowy: enRlc3Rvd3k6MTIz
 # jtestowy: anRlc3Rvd3k6MTIz
 # mtestowy: bXRlc3Rvd3k6MTIz
@@ -8,28 +8,28 @@
 #GET USERS
 // @no-cookie-jar
 GET http://localhost:9082/knife-store/api/users
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 ###
 
 #GET USER
 // @no-cookie-jar
 GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a1
-Authorization: Basic YWRtaW46YWRtaW4=
-#Authorization: Basic enRlc3Rvd3k6MTIz
+#Authorization: Basic anRlc3Rvd3k6MTIz=
+Authorization: Basic anRlc3Rvd3k6MTIz
 ###
 
 #GET NON EXISTING USER - 404 NOT FOUND
 // @no-cookie-jar
 GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 ###
 
 #CREATE USER
 // @no-cookie-jar
 PUT http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 Content-Type: application/json
 
@@ -46,7 +46,7 @@ Content-Type: application/json
 #UPDATE USER
 // @no-cookie-jar
 PATCH http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a1
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 Content-Type: application/json
 
@@ -61,7 +61,7 @@ Content-Type: application/json
 #TRY TO UPDATE NON EXISTING USER - 404 NOT FOUND
 // @no-cookie-jar
 PATCH http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 Content-Type: application/json
 
@@ -76,21 +76,21 @@ Content-Type: application/json
 #DELETE USER
 // @no-cookie-jar
 DELETE http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a1
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 ###
 
 #TRY TO DELETE NON EXISTING USER - 404 NOT FOUND
 // @no-cookie-jar
 DELETE http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 ###
 
 #CREATE USER's PHOTO
 // @no-cookie-jar
 PUT http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b65d87/photo
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 Content-Type: multipart/form-data; boundary=boundary
 
@@ -105,7 +105,7 @@ Content-Disposition: form-data; name="photo"; filename="photo4.jpg"
 #TRY TO CREATE PHOTO FOR NON EXISTING USER - 404 NOT FOUND
 // @no-cookie-jar
 PUT http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0/photo
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 Content-Type: multipart/form-data; boundary=boundary
 
@@ -120,7 +120,7 @@ Content-Disposition: form-data; name="photo"; filename="photo4.jpg"
 #GET CREATED USER's PHOTO
 // @no-cookie-jar
 GET http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b65d87/photo
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 ###
 
@@ -128,35 +128,35 @@ Authorization: Basic YWRtaW46YWRtaW4=
 #GET USER's PHOTO
 // @no-cookie-jar
 GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a1/photo
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 ###
 
 #GET NON EXISTING USER's PHOTO - 404 NOT FOUND
 // @no-cookie-jar
 GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0/photo
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 ###
 
 #DELETE USER's PHOTO
 // @no-cookie-jar
 DELETE http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b65d87/photo
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 ###
 
 #TRY TO DELETE NON EXISTING USER's PHOTO - 404 NOT FOUND
 // @no-cookie-jar
 DELETE http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0/photo
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 ###
 
 #PATCH USER's PHOTO
 // @no-cookie-jar
 PATCH http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b65d87/photo
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 Content-Type: multipart/form-data; boundary=boundary
 
@@ -171,7 +171,7 @@ Content-Disposition: form-data; name="photo"; filename="photo3.jpg"
 #PATCH NON EXISTING USER's PHOTO - 404 NOT FOUND
 // @no-cookie-jar
 PATCH http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a0/photo
-Authorization: Basic YWRtaW46YWRtaW4=
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 Content-Type: multipart/form-data; boundary=boundary
 

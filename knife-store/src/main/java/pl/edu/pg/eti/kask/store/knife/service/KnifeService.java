@@ -78,9 +78,9 @@ public class KnifeService {
 
     @RolesAllowed(UserRoles.USER)
     public void create(Knife knife){
-//        if(knifeRepository.find(knife.getId()).isPresent()){
-//            throw new IllegalArgumentException("Knife with given id already exists");
-//        }
+        if(knifeRepository.find(knife.getId()).isPresent()){
+            throw new IllegalArgumentException("Knife with given id already exists");
+        }
 //        if(knifeRepository.find(knife.getCategory().getId()).isEmpty()){
 //            throw new IllegalArgumentException("Category does not exist");
 //        }
@@ -92,6 +92,9 @@ public class KnifeService {
         User user = userRepository.findByLogin(securityContext.getCallerPrincipal().getName())
                 .orElseThrow(IllegalStateException::new);
 
+        if(knifeRepository.find(knife.getId()).isPresent()){
+            throw new IllegalArgumentException("Knife with given id already exists");
+        }
         knife.setUser(user);
         knifeRepository.create(knife);
     }
