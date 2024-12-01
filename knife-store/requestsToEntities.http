@@ -9,15 +9,15 @@
 #GET ALL KNIVES
 // @no-cookie-jar
 GET http://localhost:9082/knife-store/api/knives
-Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
-#Authorization: Basic enRlc3Rvd3k6MTIz
+#Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
+Authorization: Basic enRlc3Rvd3k6MTIz
 ###
 
 #GET SINGLE KNIFE
 // @no-cookie-jar
-GET http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c1
+GET http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c9
 #Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
-Authorization: Basic enRlc3Rvd3k6MTIz
+Authorization: Basic YnRlc3Rvd3k6MTIz
 ###
 
 #GET NON EXISTING KNIFE - 404 NOT FOUND
@@ -41,6 +41,14 @@ Content-Type: application/json
 }
 
 ###
+#DELETE KNIFE
+// @no-cookie-jar
+DELETE http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c9
+#Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
+#Authorization: Basic enRlc3Rvd3k6MTIz
+Authorization: Basic YnRlc3Rvd3k6MTIz
+
+###
 #CREATE KNIFE ASSOCIATED WITH EXISTING CATEGORY - NEW LAB4
 // @no-cookie-jar
 PUT http://localhost:9082/knife-store/api/categories/c4804e0f-769e-4ab9-9ebe-0578fb4f00b1/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c9
@@ -61,6 +69,7 @@ Content-Type: application/json
 PATCH http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c9
 Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
+#Authorization: Basic YnRlc3Rvd3k6MTIz
 Content-Type: application/json
 
 {
@@ -74,8 +83,8 @@ Content-Type: application/json
 #DELETE KNIFE
 // @no-cookie-jar
 DELETE http://localhost:9082/knife-store/api/knives/c4804e0f-769e-4ab9-9ebe-0578fb4f00c9
-Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
-#Authorization: Basic enRlc3Rvd3k6MTIz
+#Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
+Authorization: Basic enRlc3Rvd3k6MTIz
 ###
 
 #TRY TO UDATE NOT EXISTING KNIFE
@@ -104,8 +113,8 @@ Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #GET ALL CATEGORIES
 // @no-cookie-jar
 GET http://localhost:9082/knife-store/api/categories
-Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
-#Authorization: Basic enRlc3Rvd3k6MTIz
+#Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
+Authorization: Basic enRlc3Rvd3k6MTIz
 ###
 
 #GET CATEGORY

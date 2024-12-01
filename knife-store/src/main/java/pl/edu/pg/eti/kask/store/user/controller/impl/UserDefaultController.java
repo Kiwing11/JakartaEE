@@ -64,12 +64,6 @@ public class UserDefaultController implements UserController {
 
     @Override
     public void putUser(UUID id,PutUserRequest request) {
-//        try {
-//            service.create(factory.requestToUser().apply(id, request));
-//        }
-//        catch (IllegalArgumentException e) {
-//            throw new BadRequestException(e);
-//        }
         try {
             service.create(factory.requestToUser().apply(id, request));
             response.setHeader("Location", uriInfo.getBaseUriBuilder()

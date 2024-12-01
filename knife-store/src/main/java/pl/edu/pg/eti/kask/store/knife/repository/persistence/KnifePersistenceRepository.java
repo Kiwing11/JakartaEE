@@ -42,6 +42,7 @@ public class KnifePersistenceRepository implements KnifeRepository {
 
     @Override
     public void update(Knife entity) {
+        em.refresh(em.find(Knife.class, entity.getId()));
         em.merge(entity);
         em.refresh(em.find(Category.class, entity.getCategory().getId()));
     }

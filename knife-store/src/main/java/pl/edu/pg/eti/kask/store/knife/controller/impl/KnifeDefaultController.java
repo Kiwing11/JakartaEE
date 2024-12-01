@@ -2,16 +2,14 @@ package pl.edu.pg.eti.kask.store.knife.controller.impl;
 
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
+import jakarta.ejb.EJBAccessException;
 import jakarta.inject.Inject;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
 import lombok.SneakyThrows;
-import jakarta.ws.rs.BadRequestException;
-import jakarta.ws.rs.NotFoundException;
 import lombok.extern.java.Log;
 import pl.edu.pg.eti.kask.store.factory.DtoFunctionFactory;
 import pl.edu.pg.eti.kask.store.knife.controller.api.KnifeController;
@@ -24,6 +22,7 @@ import pl.edu.pg.eti.kask.store.knife.service.KnifeService;
 import pl.edu.pg.eti.kask.store.user.entity.UserRoles;
 
 import java.util.UUID;
+import java.util.logging.Level;
 
 @Path("")
 @Log
@@ -62,22 +61,44 @@ public class KnifeDefaultController implements KnifeController {
 
     @Override
     public GetKnivesResponse getKnives() {
-        return factory.knivesToResponse().apply(service.findAll());
+        try {
+            return factory.knivesToResponse().apply(service.findAllForCallerPrincipal());
+        } catch (EJBAccessException e) {
+            log.log(Level.WARNING, e.getMessage(), e);
+            throw new ForbiddenException(e.getMessage());
+        }
     }
+
 
     @Override
     public GetKnifeResponse getKnife(UUID id) {
-        return service.find(id)
-                .map(factory.knifeToResponse())
-                .orElseThrow(NotFoundException::new);
+        try{
+            if(service.find(id).isPresent()){
+                return service.findForCallerPrincipal(id).map(factory.knifeToResponse()).orElseThrow(() -> new NotFoundException());
+            }
+            throw new NotFoundException();
+
+        } catch (EJBAccessException e){
+            log.log(Level.WARNING, e.getMessage(), e);
+            throw new ForbiddenException(e.getMessage());
+        }
+
+//        return service.find(id)
+//                .map(factory.knifeToResponse())
+//                .orElseThrow(NotFoundException::new);
     }
 
     @Override
     public void deleteKnife(UUID id) {
-        service.find(id)
-                .ifPresentOrElse(service::delete, () -> {
-                    throw new NotFoundException();
-                });
+        try {
+            service.find(id)
+                    .ifPresentOrElse(service::delete, () -> {
+                        throw new NotFoundException();
+                    });
+        } catch (EJBAccessException e) {
+            log.log(Level.WARNING, e.getMessage(), e);
+            throw new ForbiddenException(e.getMessage());
+        }
     }
 
     @Override
@@ -115,11 +136,12 @@ public class KnifeDefaultController implements KnifeController {
     @Override
     @SneakyThrows
     public void putKnifeByCategory(UUID categoryId, UUID knifeId, PutKnifeRequest request){
+        System.out.println("DZIALAM");
         try{
             categoryService.find(categoryId).ifPresentOrElse(
                     category -> {
                         request.setCategory(categoryId);
-                        service.create(factory.requestToKnife().apply(knifeId, request));
+                        service.createForCallerPrincipal(factory.requestToKnife().apply(knifeId, request));
                         response.setHeader("Location", uriInfo.getBaseUriBuilder()
                                 .path(KnifeController.class, "getKnife")
                                 .build(knifeId)
@@ -138,12 +160,17 @@ public class KnifeDefaultController implements KnifeController {
 
     @Override
     public void patchKnife(UUID id, PatchKnifeRequest request){
-        service.find(id)
-                .ifPresentOrElse(entity -> {
-                    service.update(factory.updateKnife().apply(entity, request));
-                }, () -> {
-                    throw new NotFoundException();
-                });
+        try {
+            service.find(id)
+                    .ifPresentOrElse(entity -> {
+                        service.update(factory.updateKnife().apply(entity, request));
+                    }, () -> {
+                        throw new NotFoundException();
+                    });
+        } catch (EJBAccessException e) {
+            log.log(Level.WARNING, e.getMessage(), e);
+            throw new ForbiddenException(e.getMessage());
+        }
     }
 
     @Override

@@ -1,16 +1,14 @@
 package pl.edu.pg.eti.kask.store.knife.controller.impl;
 
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.ejb.EJBAccessException;
 import jakarta.inject.Inject;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
 import lombok.SneakyThrows;
-import jakarta.ws.rs.BadRequestException;
-import jakarta.ws.rs.NotFoundException;
 import pl.edu.pg.eti.kask.store.factory.DtoFunctionFactory;
 import pl.edu.pg.eti.kask.store.knife.controller.api.CategoryController;
 import pl.edu.pg.eti.kask.store.knife.dto.GetCategoriesResponse;
@@ -71,26 +69,35 @@ public class CategoryDefaultController implements CategoryController {
             throw new WebApplicationException(Response.Status.CREATED);
         } catch (IllegalArgumentException e){
             throw new BadRequestException(e);
+        } catch (EJBAccessException e){
+            throw new ForbiddenException(e.getMessage());
         }
     }
 
     @Override
     public void patchCategory(UUID id, PatchCategoryRequest request){
-        service.find(id)
-                .ifPresentOrElse(entity -> {
-                    service.update(factory.updateCategory().apply(entity, request));
-                }, () -> {
-                    throw new NotFoundException();
-                });
+        try {
+            service.find(id)
+                    .ifPresentOrElse(entity -> {
+                        service.update(factory.updateCategory().apply(entity, request));
+                    }, () -> {
+                        throw new NotFoundException();
+                    });
+        } catch (EJBAccessException e){
+            throw new ForbiddenException(e.getMessage());
+        }
     }
 
-    @RolesAllowed(UserRoles.ADMIN)
     @Override
     public void deleteCategory(UUID id) {
-        service.find(id)
-                .ifPresentOrElse(service::delete, () -> {
-                    throw new NotFoundException();
-                });
+        try {
+            service.find(id)
+                    .ifPresentOrElse(service::delete, () -> {
+                        throw new NotFoundException();
+                    });
+        } catch (EJBAccessException e){
+            throw new ForbiddenException(e.getMessage());
+        }
     }
 
 }

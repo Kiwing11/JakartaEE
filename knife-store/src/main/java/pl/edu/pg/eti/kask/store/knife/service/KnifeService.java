@@ -96,6 +96,7 @@ public class KnifeService {
             throw new IllegalArgumentException("Knife with given id already exists");
         }
         knife.setUser(user);
+        System.out.println(knife.getUser());
         knifeRepository.create(knife);
     }
 
@@ -127,13 +128,13 @@ public class KnifeService {
         return userRepository.find(id).map(knifeRepository::findAllByUser);
     }
 
-    private void checkAdminRoleOrOwner(Optional<Knife> reservation) throws EJBAccessException {
+    private void checkAdminRoleOrOwner(Optional<Knife> knife) throws EJBAccessException {
         if (securityContext.isCallerInRole(UserRoles.ADMIN)) {
             return;
         }
         if (securityContext.isCallerInRole(UserRoles.USER)
-                && reservation.isPresent()
-                && reservation.get().getUser().getLogin().equals(securityContext.getCallerPrincipal().getName())) {
+                && knife.isPresent()
+                && knife.get().getUser().getLogin().equals(securityContext.getCallerPrincipal().getName())) {
             return;
         }
         throw new EJBAccessException("Caller not authorized.");

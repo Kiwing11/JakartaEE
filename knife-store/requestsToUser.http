@@ -4,6 +4,7 @@
 # jtestowy: anRlc3Rvd3k6MTIz
 # mtestowy: bXRlc3Rvd3k6MTIz
 # btestowy: YnRlc3Rvd3k6MTIz
+# testPodczasLabow: dGVzdFBvZGN6YXNMYWJvdzp0ZXN0MTIz
 
 #GET USERS
 // @no-cookie-jar
@@ -16,7 +17,7 @@ Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 // @no-cookie-jar
 GET http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a1
 #Authorization: Basic anRlc3Rvd3k6MTIz=
-Authorization: Basic anRlc3Rvd3k6MTIz
+Authorization: Basic anRlc3Rvd3k6MTIzz
 ###
 
 #GET NON EXISTING USER - 404 NOT FOUND
@@ -28,13 +29,13 @@ Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 
 #CREATE USER
 // @no-cookie-jar
-PUT http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
-Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
+PUT http://localhost:9082/knife-store/api/users/3c6f1eb1-8069-44ab-988f-d7fed2b65d80
+#Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
 #Authorization: Basic enRlc3Rvd3k6MTIz
 Content-Type: application/json
 
 {
-  "login": "testPodczasLabow",
+  "login": "testPodczasLabow1",
   "name": "Lab",
   "surname": "1",
   "password": "test123",
@@ -46,8 +47,8 @@ Content-Type: application/json
 #UPDATE USER
 // @no-cookie-jar
 PATCH http://localhost:9082/knife-store/api/users/c4804e0f-769e-4ab9-9ebe-0578fb4f00a1
-Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
-#Authorization: Basic enRlc3Rvd3k6MTIz
+#Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbg==
+Authorization: Basic enRlc3Rvd3k6MTIz
 Content-Type: application/json
 
 {
