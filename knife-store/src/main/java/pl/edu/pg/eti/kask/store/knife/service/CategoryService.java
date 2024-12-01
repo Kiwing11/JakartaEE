@@ -32,7 +32,7 @@ public class CategoryService {
         return repository.find(id);
     }
 
-    @PermitAll
+    @RolesAllowed(UserRoles.USER)
     public List<Category> findAll(){
         return repository.findAll();
     }

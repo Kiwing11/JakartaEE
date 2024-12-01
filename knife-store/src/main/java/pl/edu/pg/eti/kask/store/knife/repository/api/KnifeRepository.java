@@ -15,4 +15,6 @@ public interface KnifeRepository extends Repository<Knife, UUID> {
     List<Knife> findAllByUser(User user);
 
     List<Knife> findAllByCategory(Category category);
+
+    List<Knife> findAllByUserAndCategory(User user, Category category);
 }

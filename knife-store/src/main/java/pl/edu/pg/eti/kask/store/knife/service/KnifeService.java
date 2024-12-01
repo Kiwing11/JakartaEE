@@ -6,7 +6,9 @@ import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.security.enterprise.SecurityContext;
+import jakarta.ws.rs.NotFoundException;
 import lombok.NoArgsConstructor;
+import pl.edu.pg.eti.kask.store.knife.entity.Category;
 import pl.edu.pg.eti.kask.store.knife.entity.Knife;
 import pl.edu.pg.eti.kask.store.knife.repository.api.CategoryRepository;
 import pl.edu.pg.eti.kask.store.knife.repository.api.KnifeRepository;
@@ -53,6 +55,11 @@ public class KnifeService {
     @RolesAllowed(UserRoles.USER)
     public List<Knife> findAll(User user) {
         return knifeRepository.findAllByUser(user);
+    }
+
+    @RolesAllowed(UserRoles.USER)
+    public List<Knife> findAll(User user, Category category){
+        return knifeRepository.findAllByUserAndCategory(user, category);
     }
 
     @RolesAllowed(UserRoles.USER)
@@ -120,7 +127,15 @@ public class KnifeService {
 
     @RolesAllowed(UserRoles.USER)
     public Optional<List<Knife>> findAllByCategory(UUID id) {
-        return categoryRepository.find(id).map(knifeRepository::findAllByCategory);
+        if(securityContext.isCallerInRole(UserRoles.ADMIN)){
+            return categoryRepository.find(id).map(knifeRepository::findAllByCategory);
+        }
+        User user = userRepository.findByLogin(securityContext.getCallerPrincipal().getName())
+                .orElseThrow(IllegalStateException::new);
+
+        Category category = categoryRepository.find(id).orElseThrow(NotFoundException::new);
+
+        return Optional.of(knifeRepository.findAllByUserAndCategory(user, category));
     }
 
     @RolesAllowed(UserRoles.USER)

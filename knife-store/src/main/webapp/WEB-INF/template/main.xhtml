@@ -25,6 +25,22 @@
                     <h:link outcome="/index.xhtml">
                         <h:graphicImage name="header.png" styleClass="mw-100" alt="Header"></h:graphicImage>
                     </h:link>
+
+                    <div class="container d-flex align-items-center justify-content-end" style="flex-direction: row;">
+                        <div class="container d-flex align-items-center justify-content-end">
+                            <h:form styleClass="container d-flex  align-items-center justify-content-end"
+                                    rendered="#{facesContext.externalContext.userPrincipal != null}">
+                                #{msg.logged}: <h:outputText
+                                    value="#{facesContext.externalContext.userPrincipal.name}"/>
+                                <h:commandButton styleClass="btn btn-link" value="#{msg.logout}"
+                                                 action="#{userLogout.logoutAction()}"/>
+                            </h:form>
+                        </div>
+<!--                        <h:graphicImage width="50px" rendered="#{facesContext.viewRoot.locale.language == 'pl'}"-->
+<!--                                        value="https://cdn.pixabay.com/photo/2018/06/02/05/17/poland-3447820_1280.png"/>-->
+<!--                        <h:graphicImage width="50px" rendered="#{facesContext.viewRoot.locale.language != 'pl'}"-->
+<!--                                        value="https://e7.pngegg.com/pngimages/559/44/png-clipart-european-union-flag-of-the-united-kingdom-british-flag-logo-thumbnail.png"/>-->
+                    </div>
                 </header>
 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
@@ -33,14 +49,22 @@
                             <li class="nav-item">
                                 <h:link styleClass="nav-link" outcome="/index.xhtml">Home</h:link>
                             </li>
-                            <li class="nav-item">
-                                <h:link styleClass="nav-link"
-                                        outcome="/knife/knife_list.xhtml">Knives</h:link>
-                            </li>
-                            <li class="nav-item">
-                                <h:link styleClass="nav-link"
-                                        outcome="/category/category_list.xhtml">Categories</h:link>
-                            </li>
+<!--                            <li class="nav-item">-->
+<!--                                <h:link styleClass="nav-link"-->
+<!--                                        outcome="/knife/knife_list.xhtml">Knives</h:link>-->
+<!--                            </li>-->
+<!--                            <h:panelGroup rendered="#{facesContext.externalContext.isUserInRole('user')}">-->
+                                <li class="nav-item">
+                                    <h:link styleClass="nav-link"
+                                            outcome="/category/category_list.xhtml">#{msg.categories}</h:link>
+                                </li>
+<!--                            </h:panelGroup>-->
+<!--                            <h:panelGroup rendered="#{facesContext.externalContext.userPrincipal == null}">-->
+<!--                                <li class="nav-item">-->
+<!--                                    <h:link styleClass="nav-link"-->
+<!--                                            outcome="/authentication/custom/login.xhtml">#{msg.login}</h:link>-->
+<!--                                </li>-->
+<!--                            </h:panelGroup>-->
                         </ul>
                     </div>
                 </nav>

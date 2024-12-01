@@ -7,4 +7,15 @@
         <converter-id>localDateConverter</converter-id>
         <converter-class>pl.edu.pg.eti.kask.store.knife.model.converter.LocalDateConverter</converter-class>
     </converter>
+    <application>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>en</supported-locale>
+            <supported-locale>pl</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
 </faces-config>

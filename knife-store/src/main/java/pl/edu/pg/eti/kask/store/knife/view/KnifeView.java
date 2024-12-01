@@ -51,7 +51,7 @@ public class KnifeView implements Serializable {
      * field and initialized during init of the view.
      */
     public void init() throws IOException {
-        Optional<Knife> knife = service.find(id);
+        Optional<Knife> knife = service.findForCallerPrincipal(id);
         if (knife.isPresent()) {
             this.knife = factory.knifeToModel().apply(knife.get());
         } else {
