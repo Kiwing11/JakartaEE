@@ -19,7 +19,7 @@ import lombok.SneakyThrows;
 import lombok.extern.java.Log;
 import static jakarta.security.enterprise.authentication.mechanism.http.AuthenticationParameters.withParams;
 
-@ViewScoped
+@RequestScoped
 @Named
 @Log
 public class UserLogin {

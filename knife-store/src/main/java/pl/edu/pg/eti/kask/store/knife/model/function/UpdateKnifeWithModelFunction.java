@@ -3,6 +3,7 @@ package pl.edu.pg.eti.kask.store.knife.model.function;
 import lombok.SneakyThrows;
 import pl.edu.pg.eti.kask.store.knife.entity.Knife;
 import pl.edu.pg.eti.kask.store.knife.model.KnifeEditModel;
+import pl.edu.pg.eti.kask.store.user.entity.User;
 
 import java.io.Serializable;
 import java.util.function.BiFunction;
@@ -18,6 +19,7 @@ public class UpdateKnifeWithModelFunction implements BiFunction<Knife, KnifeEdit
                 .bladeLength(request.getBladeLength())
                 .productionDate(request.getProductionDate())
                 .category(entity.getCategory())
+                .user(entity.getUser())
                 .build();
     }
 

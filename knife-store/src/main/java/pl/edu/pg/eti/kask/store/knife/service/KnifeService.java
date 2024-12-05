@@ -85,6 +85,7 @@ public class KnifeService {
 
     @RolesAllowed(UserRoles.USER)
     public void create(Knife knife){
+        System.out.println("Creating knife: " + knife);
         if(knifeRepository.find(knife.getId()).isPresent()){
             throw new IllegalArgumentException("Knife with given id already exists");
         }

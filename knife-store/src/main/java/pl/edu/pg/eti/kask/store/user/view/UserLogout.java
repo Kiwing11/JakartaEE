@@ -7,7 +7,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.SneakyThrows;
-@ViewScoped
+@RequestScoped
 @Named
 public class UserLogout {
     private final HttpServletRequest request;

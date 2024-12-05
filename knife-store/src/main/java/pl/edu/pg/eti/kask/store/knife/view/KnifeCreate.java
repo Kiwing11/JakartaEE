@@ -137,9 +137,9 @@ public class KnifeCreate implements Serializable {
      * @return knives list navigation case
      */
     public String saveAction() {
-        knifeService.create(factory.modelToKnife().apply(knife));
+        knifeService.createForCallerPrincipal(factory.modelToKnife().apply(knife));
         conversation.end();
-        return "/knife/knife_list.xhtml?faces-redirect=true";
+        return "/category/category_view.xhtml?faces-redirect=true&id=" + knife.getCategory().getId();
     }
 
     /**

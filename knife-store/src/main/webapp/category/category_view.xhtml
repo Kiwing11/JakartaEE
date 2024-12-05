@@ -52,13 +52,18 @@
                     </h:link>
                 </h:column>
 
-                <h:column rendered="#{facesContext.externalContext.isUserInRole('admin')}">
+                <h:column>
                     <f:facet name="header">Delete</f:facet>
                     <h:form>
                         <h:commandButton styleClass="btn" value="Delete"
                                          action="#{knifeList.deleteAction(knife)}"/>
                     </h:form>
                 </h:column>
+
+                <f:facet name="footer">
+                    <h:button styleClass="btn" outcome="/knife/knife_create__basic.xhtml"
+                              value="Create new knife"/>
+                </f:facet>
 
             </h:dataTable>
         </article>

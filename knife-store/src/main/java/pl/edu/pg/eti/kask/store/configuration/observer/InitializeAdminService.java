@@ -35,7 +35,7 @@ public class InitializeAdminService {
     @PostConstruct
     @SneakyThrows
     private void init(){
-        if(userRepository.findByLogin("admin").isEmpty()){
+        if(userRepository.findByLogin("admin-service").isEmpty()){
             User admin = User.builder()
                     .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00a9"))
                     .login("admin-service")

@@ -66,8 +66,12 @@ public class KnifeEdit implements Serializable {
      */
     public String saveAction() {
         service.update(factory.updateKnife().apply(service.find(id).orElseThrow(), knife));
-        String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
-        return "/knife/knife_list.xhtml?faces-redirect=true";
+        //String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+        return "/knife/knife_view?id=" + id + "&faces-redirect=true";
+    }
+
+    public String cancelAction(){
+        return "/knife/knife_view?id=" + id + "&faces-redirect=true";
     }
 
 }

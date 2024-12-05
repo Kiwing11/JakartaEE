@@ -35,6 +35,7 @@ public class KnifeList {
 
     public KnivesModel getKnives() {
         if (knives == null) {
+            System.out.println("Loading knife list");
             knives = factory.knivesToModel().apply(service.findAllForCallerPrincipal());
         }
         return knives;
@@ -42,15 +43,31 @@ public class KnifeList {
 
     public KnivesModel getCategoryKnives(UUID categoryId) {
         if (knives == null) {
+            System.out.println("Loading category knives list");
             knives = factory.knivesToModel().apply(service.findAllByCategory(categoryId).orElseThrow());
         }
         return knives;
 
     }
 
-    public String deleteAction(KnivesModel.Knife knife) {
+    public void deleteAction(KnivesModel.Knife knife) {
+        UUID categoryId = service.find(knife.getId())
+                .map(k -> k.getCategory().getId())
+                .orElse(null);
         service.delete(knife.getId());
-        return "knife_list?faces-redirect=true";
+        knives = null;
+        try{
+            getCategoryKnives(categoryId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        knives = null;
+//        try {
+//            getKnives();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
 }

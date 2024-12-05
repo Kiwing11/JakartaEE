@@ -5,17 +5,18 @@
                 template="/WEB-INF/template/main.xhtml">
     <ui:define name="content">
         <article class="text--justified">
-            <header><h2>Login</h2></header>
+            <header><h2>#{msg.login}</h2></header>
             <section>
-                <form class="container" action="j_security_check" onreset="onReset()" method="post">
+                <h:form styleClass="container" onreset="onReset()">
                     <div class="row">
                         <div class="col-4 p-2">
                             <div class="form-outline">
-                                <input id="username" name="j_username" type="text" class="form-control"/>
-                                <label for="username" class="form-label">Name:</label>
+                                <h:inputText id="username" name="j_username" type="text" class="form-control" value="#{userLogin.login}"/>
+                                <h:outputLabel for="username" styleClass="form-label" value="#{msg.login}:"/>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-4 p-2">
                             <div class="form-outline">
@@ -24,6 +25,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-2 p-2 text-center">
                             <h:commandButton styleClass="btn btn-primary" type="submit" value="#{msg.toLogin}" action="#{userLogin.loginAction()}"/>
@@ -32,7 +34,7 @@
                             <h:commandButton styleClass="btn btn-secondary" type="reset" value="#{msg.reset}"/>
                         </div>
                     </div>
-                </form>
+                </h:form>
             </section>
         </article>
     </ui:define>

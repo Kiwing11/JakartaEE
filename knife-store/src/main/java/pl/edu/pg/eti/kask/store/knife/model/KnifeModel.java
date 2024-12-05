@@ -1,6 +1,7 @@
 package pl.edu.pg.eti.kask.store.knife.model;
 
 import lombok.*;
+import pl.edu.pg.eti.kask.store.user.entity.User;
 
 import java.time.LocalDate;
 
@@ -20,4 +21,6 @@ public class KnifeModel {
     private LocalDate productionDate;
 
     private String category;
+
+    private String user;
 }

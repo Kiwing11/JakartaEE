@@ -64,10 +64,10 @@ public class InitializedData{
     @PostConstruct
     @SneakyThrows
     private void init() {
-        if (userService.find(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00a8")).isEmpty()) {
-
+        if (userService.find("admin").isEmpty()) {
+            System.out.println("Creating initial data");
             User admin = User.builder()
-                    .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00a8"))
+                    .id(UUID.randomUUID())
                     .name("Admin")
                     .surname("System")
                     .email("admin@knifestore.example.com")
@@ -78,7 +78,7 @@ public class InitializedData{
                     .build();
 
             User zbigniew = User.builder()
-                    .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00a1"))
+                    .id(UUID.randomUUID())
                     .login("ztestowy")
                     .name("Zbigniew")
                     .surname("Testowy")
@@ -89,7 +89,7 @@ public class InitializedData{
                     .build();
 
             User jacek = User.builder()
-                    .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00a2"))
+                    .id(UUID.randomUUID())
                     .login("jtestowy")
                     .name("Jacek")
                     .surname("Testowy")
@@ -100,7 +100,7 @@ public class InitializedData{
                     .build();
 
             User mariusz = User.builder()
-                    .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00a3"))
+                    .id(UUID.randomUUID())
                     .login("mtestowy")
                     .name("Mariusz")
                     .surname("Testowy")
@@ -111,7 +111,7 @@ public class InitializedData{
                     .build();
 
             User blazej = User.builder()
-                    .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00a4"))
+                    .id(UUID.randomUUID())
                     .login("btestowy")
                     .name("Blazej")
                     .surname("Testowy")
@@ -121,6 +121,7 @@ public class InitializedData{
                     .roles(List.of(UserRoles.USER))
                     .build();
 
+            userService.create(admin);
             userService.create(zbigniew);
             System.out.println("User created: " + zbigniew);
             userService.create(jacek);
@@ -128,19 +129,19 @@ public class InitializedData{
             userService.create(blazej);
 
             Category japanese = Category.builder()
-                    .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00b1"))
+                    .id(UUID.randomUUID())
                     .name("Japanese")
                     .description("Knives from Japan")
                     .build();
 
             Category thai = Category.builder()
-                    .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00b2"))
+                    .id(UUID.randomUUID())
                     .name("Thai")
                     .description("Knives from Thailand")
                     .build();
 
             Category chinese = Category.builder()
-                    .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00b3"))
+                    .id(UUID.randomUUID())
                     .name("Chinese")
                     .description("Knives from China")
                     .build();
@@ -150,7 +151,7 @@ public class InitializedData{
             categoryService.create(chinese);
 
             Knife knife1 = Knife.builder()
-                    .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00c1"))
+                    .id(UUID.randomUUID())
                     .name("Santoku")
                     .category(japanese)
                     .user(zbigniew)
@@ -160,7 +161,7 @@ public class InitializedData{
                     .build();
 
             Knife knife2 = Knife.builder()
-                    .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00c2"))
+                    .id(UUID.randomUUID())
                     .name("Nakiri")
                     .category(japanese)
                     .user(mariusz)
@@ -170,7 +171,7 @@ public class InitializedData{
                     .build();
 
             Knife knife3 = Knife.builder()
-                    .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00c3"))
+                    .id(UUID.randomUUID())
                     .name("Cleaver")
                     .category(chinese)
                     .user(blazej)
@@ -180,7 +181,7 @@ public class InitializedData{
                     .build();
 
             Knife knife4 = Knife.builder()
-                    .id(UUID.fromString("c4804e0f-769e-4ab9-9ebe-0578fb4f00c4"))
+                    .id(UUID.randomUUID())
                     .name("Santoku")
                     .category(thai)
                     .user(zbigniew)

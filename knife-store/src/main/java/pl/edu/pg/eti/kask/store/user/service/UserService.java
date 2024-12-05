@@ -35,6 +35,11 @@ public class UserService {
     }
 
     @RolesAllowed(UserRoles.USER)
+    public Optional<User> find(String login){
+        return repository.findByLogin(login);
+    }
+
+    @RolesAllowed(UserRoles.USER)
     public Optional<User> find(UUID id){
         return repository.find(id);
     }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="/WEB-INF/template/main.xhtml">
+
     <ui:define name="content">
         <article class="text--justified">
             <header><h2>Login</h2></header>
@@ -12,28 +12,31 @@
                         <div class="col-4 p-2">
                             <div class="form-outline">
                                 <input id="username" name="j_username" type="text" class="form-control"/>
-                                <label for="username" class="form-label">Name:</label>
+                                <label for="username" class="form-label">#{msg.login}:</label>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-4 p-2">
                             <div class="form-outline">
-                                <h:inputSecret id="password" name="j_password" styleClass="form-control" value="#{userLogin.password}"/>
-                                <h:outputLabel for="password" class="form-label" value="#{msg.password}:"/>
+                                <input id="password" name="j_password" type="password" class="form-control"/>
+                                <label for="password" class="form-label">#{msg.password}:</label>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-2 p-2 text-center">
-                            <h:commandButton styleClass="btn btn-primary" type="submit" value="#{msg.toLogin}" action="#{userLogin.loginAction()}"/>
+                            <button class="btn btn-primary" type="submit">#{msg.login}</button>
                         </div>
                         <div class="col-2 p-2 text-center">
-                            <h:commandButton styleClass="btn btn-secondary" type="reset" value="#{msg.reset}"/>
+                            <button class="btn btn-secondary" type="reset">#{msg.reset}</button>
                         </div>
                     </div>
                 </form>
             </section>
         </article>
     </ui:define>
+
 </ui:composition>
