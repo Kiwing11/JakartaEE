@@ -73,10 +73,9 @@ public class KnifePersistenceRepository implements KnifeRepository {
 
     @Override
     public List<Knife> findAllByCategory(Category category){
-//        return em.createQuery("SELECT k FROM Knife k WHERE k.category = :category", Knife.class)
-//                .setParameter("category", category)
-//                .getResultList();
-        return category.getKnives();
+        return em.createQuery("SELECT k FROM Knife k WHERE k.category = :category", Knife.class)
+                .setParameter("category", category)
+                .getResultList();
     }
 
     @Override

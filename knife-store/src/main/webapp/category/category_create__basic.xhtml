@@ -11,14 +11,14 @@
 
     <ui:define name="content">
         <article>
-            <header><h2>Create category - basic information</h2></header>
+            <header><h2>#{msg.createCategoryBasicInformation}</h2></header>
             <h:form styleClass="container" onreset="onReset()" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col-4 p-2">
                         <div class="form-outline">
                             <h:inputText id="name" value="#{categoryCreate.category.name}" styleClass="form-control"/>
-                            <h:outputLabel for="name" value="Name:" styleClass="form-label"/>
+                            <h:outputLabel for="name" value="#{msg.name}:" styleClass="form-label"/>
                         </div>
                     </div>
                 </div>
@@ -27,18 +27,18 @@
                     <div class="col-4 p-2">
                         <div class="form-outline">
                             <h:inputText id="description" value="#{categoryCreate.category.description}" styleClass="form-control"/>
-                            <h:outputLabel for="description" value="Description:" styleClass="form-label"/>
+                            <h:outputLabel for="description" value="#{msg.knifeDescription}:" styleClass="form-label"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn btn-primary" value="Create"
+                        <h:commandButton styleClass="btn btn-primary" value="#{msg.create}"
                                          action="#{categoryCreate.saveAction()}"/>
                     </div>
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn btn-secondary" value="Cancel"
+                        <h:commandButton styleClass="btn btn-secondary" value="#{msg.cancel}"
                                          action="#{categoryCreate.cancelAction()}"/>
                     </div>
                 </div>

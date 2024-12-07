@@ -12,13 +12,13 @@
 
     <ui:define name="content">
         <article>
-            <header><h2>Edit knife info</h2></header>
+            <header><h2>#{msg.editKnifeInfo}</h2></header>
             <h:form styleClass="container" onreset="onReset()" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-4 p-2">
                         <div class="form-outline">
                             <h:inputText id="name" value="#{knifeEdit.knife.name}" styleClass="form-control"/>
-                            <h:outputLabel for="name" value="Name:" styleClass="form-label"/>
+                            <h:outputLabel for="name" value="#{msg.name}:" styleClass="form-label"/>
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                     <div class="col-4 p-2">
                         <div class="form-outline">
                             <h:inputText id="bladeLength" value="#{knifeEdit.knife.bladeLength}" styleClass="form-control"/>
-                            <h:outputLabel for="bladeLength" value="Blade Length:" styleClass="form-label"/>
+                            <h:outputLabel for="bladeLength" value="#{msg.bladeLength}:" styleClass="form-label"/>
                         </div>
                     </div>
                 </div>
@@ -37,18 +37,18 @@
                         <div class="form-outline">
                             <h:inputText id="productionDate" value="#{knifeEdit.knife.productionDate}" styleClass="form-control" type="date" converter="localDateConverter">
                             </h:inputText>
-                            <h:outputLabel for="productionDate" value="Production Date:" styleClass="form-label"/>
+                            <h:outputLabel for="productionDate" value="#{msg.productionDate}:" styleClass="form-label"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn btn-primary" value="Update"
+                        <h:commandButton styleClass="btn btn-primary" value="#{msg.update}"
                                          action="#{knifeEdit.saveAction()}"/>
                     </div>
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn btn-secondary" type="reset" value="Reset"/>
+                        <h:commandButton styleClass="btn btn-secondary" type="reset" value="#{msg.reset}"/>
                     </div>
                     <div class="col-2 p-2 text-center">
                         <h:commandButton styleClass="btn btn-secondary" value="#{msg.cancel}"

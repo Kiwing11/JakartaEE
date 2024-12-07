@@ -9,7 +9,7 @@
         <h:outputStylesheet library="knife" name="css/knife_list.css"/><!-- Automatically relocated to head. -->
 
         <article class="text--justified">
-            <header><h2>Knives</h2></header>
+            <header><h2>#{msg.knives}</h2></header>
 
             <h:dataTable value="#{knifeList.knives.knives}" var="knife"
                          styleClass="table align-middle mb-0 bg-white" headerClass="bg-light">
@@ -21,14 +21,14 @@
 
                 <h:column>
                     <f:facet name="header">View</f:facet>
-                    <h:link outcome="/knife/knife_view.xhtml" value="View">
+                    <h:link outcome="/knife/knife_view.xhtml" value="#{msg.view}">
                         <f:param name="id" value="#{knife.id}"/>
                     </h:link>
                 </h:column>
 
                 <h:column>
                     <f:facet name="header">Edit</f:facet>
-                    <h:link outcome="/knife/knife_edit.xhtml" value="Edit">
+                    <h:link outcome="/knife/knife_edit.xhtml" value="#{msg.edit}">
                         <f:param name="id" value="#{knife.id}"/>
                     </h:link>
                 </h:column>
@@ -36,14 +36,14 @@
                 <h:column>
                     <f:facet name="header">Delete</f:facet>
                     <h:form>
-                        <h:commandButton styleClass="btn" value="Delete"
+                        <h:commandButton styleClass="btn" value="#{msg.delete}"
                                          action="#{knifeList.deleteAction(knife)}"/>
                     </h:form>
                 </h:column>
 
                 <f:facet name="footer">
                     <h:button styleClass="btn" outcome="/knife/knife_create__basic.xhtml"
-                              value="Create new knife"/>
+                              value="#{msg.newKnife}"/>
                 </f:facet>
 
             </h:dataTable>

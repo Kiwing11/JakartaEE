@@ -11,15 +11,15 @@
 
     <ui:define name="content">
         <article>
-            <header><h2>Create knife - basic information</h2></header>
+            <header><h2>#{msg.createKnifeBasicInformation}</h2></header>
             <h:form styleClass="container" onreset="onReset()" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn" value="Previous" immediate="true"
+                        <h:commandButton styleClass="btn" value="#{msg.previous}" immediate="true"
                                          action="#{knifeCreate.goToBasicAction()}"/>
                     </div>
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn" value="Next"
+                        <h:commandButton styleClass="btn" value="#{msg.next}"
                                          action="#{knifeCreate.goToConfirmAction()}"/>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-4 p-2">
                         <fieldset>
-                            <legend class="form-label fs-6">Category:</legend>
+                            <legend class="form-label fs-6">#{msg.category}:</legend>
                             <h:selectOneMenu id="categorySelect" value="#{knifeCreate.knife.category}" styleClass="form-select">
                                 <f:selectItems value="#{knifeCreate.categories}" var="category" itemValue="#{category}" itemLabel="#{category.name}"/>
                             </h:selectOneMenu>
@@ -37,11 +37,11 @@
 
                 <div class="row">
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn btn-primary" value="Create"
+                        <h:commandButton styleClass="btn btn-primary" value="#{msg.create}"
                                          action="#{knifeCreate.saveAction()}"/>
                     </div>
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn btn-secondary" value="Cancel"
+                        <h:commandButton styleClass="btn btn-secondary" value="#{msg.cancel}"
                                          action="#{knifeCreate.cancelAction()}"/>
                     </div>
                 </div>

@@ -18,7 +18,7 @@
                     <div class="col-4">
                         <div class="row mb-2">
                             <div class="col-6 fw-bold">
-                                Description
+                                #{msg.knifeDescription}
                             </div>
                             <div class="col-6 ">
                                 <h:outputText value="#{categoryView.category.description}"/>
@@ -28,41 +28,41 @@
                 </div>
             </div>
             <div class="col-6 fw-bold mt-5">
-                Related Knives
+                #{msg.relatedKnives}
             </div>
             <h:dataTable value="#{knifeList.getCategoryKnives(categoryView.id).knives}" var="knife"
                          styleClass="table align-middle mb-0 bg-white" headerClass="bg-light">
 
                 <h:column>
-                    <f:facet name="header">Name</f:facet>
+                    <f:facet name="header">#{msg.name}</f:facet>
                     <h:outputText value="#{knife.name}"/>
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">View</f:facet>
-                    <h:link outcome="/knife/knife_view.xhtml" value="View">
+                    <f:facet name="header">#{msg.view}</f:facet>
+                    <h:link outcome="/knife/knife_view.xhtml" value="#{msg.view}">
                         <f:param name="id" value="#{knife.id}"/>
                     </h:link>
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">Edit</f:facet>
-                    <h:link outcome="/knife/knife_edit.xhtml" value="Edit">
+                    <f:facet name="header">#{msg.edit}</f:facet>
+                    <h:link outcome="/knife/knife_edit.xhtml" value="#{msg.edit}">
                         <f:param name="id" value="#{knife.id}"/>
                     </h:link>
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">Delete</f:facet>
+                    <f:facet name="header">#{msg.delete}</f:facet>
                     <h:form>
-                        <h:commandButton styleClass="btn" value="Delete"
+                        <h:commandButton styleClass="btn" value="#{msg.delete}"
                                          action="#{knifeList.deleteAction(knife)}"/>
                     </h:form>
                 </h:column>
 
                 <f:facet name="footer">
                     <h:button styleClass="btn" outcome="/knife/knife_create__basic.xhtml"
-                              value="Create new knife"/>
+                              value="#{msg.newKnife}"/>
                 </f:facet>
 
             </h:dataTable>

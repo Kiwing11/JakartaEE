@@ -12,7 +12,7 @@
 
     <ui:define name="content">
         <article>
-            <header><h2>Edit knife info</h2></header>
+            <header><h2>#{msg.editCategoryInfo}</h2></header>
             <h:form styleClass="container" onreset="onReset()" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-4 p-2">
@@ -25,11 +25,11 @@
 
                 <div class="row">
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn btn-primary" value="Update"
+                        <h:commandButton styleClass="btn btn-primary" value="#{msg.update}"
                                          action="#{categoryEdit.saveAction()}"/>
                     </div>
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn btn-secondary" type="reset" value="Reset"/>
+                        <h:commandButton styleClass="btn btn-secondary" type="reset" value="#{msg.reset}"/>
                     </div>
                 </div>
             </h:form>

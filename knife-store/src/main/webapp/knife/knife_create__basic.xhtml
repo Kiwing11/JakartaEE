@@ -11,14 +11,14 @@
 
     <ui:define name="content">
         <article>
-            <header><h2>Create knife - basic information</h2></header>
+            <header><h2>#{msg.createKnifeBasicInformation}</h2></header>
             <h:form styleClass="container" onreset="onReset()" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-2 p-2 text-center">
-                        <h:button styleClass="btn" value="Previous" disabled="true"/>
+                        <h:button styleClass="btn" value="#{msg.previous}" disabled="true"/>
                     </div>
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn" value="Next"
+                        <h:commandButton styleClass="btn" value="#{msg.next}"
                                          action="#{knifeCreate.goToCategoryAction()}"/>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                     <div class="col-4 p-2">
                         <div class="form-outline">
                             <h:inputText id="bladeLength" value="#{knifeCreate.knife.bladeLength}" styleClass="form-control"/>
-                            <h:outputLabel for="bladeLength" value="Blade Length:" styleClass="form-label"/>
+                            <h:outputLabel for="bladeLength" value="#{msg.bladeLength}:" styleClass="form-label"/>
                         </div>
                     </div>
                 </div>
@@ -46,17 +46,17 @@
                         <div class="form-outline">
                             <h:inputText id="productionDate" value="#{knifeCreate.knife.productionDate}" styleClass="form-control" type="date" converter="localDateConverter">
                             </h:inputText>
-                            <h:outputLabel for="productionDate" value="Production Date:" styleClass="form-label"/>
+                            <h:outputLabel for="productionDate" value="#{msg.productionDate}:" styleClass="form-label"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-2 p-2 text-center">
-                        <h:button styleClass="btn btn-primary" value="Create" disabled="true"/>
+                        <h:button styleClass="btn btn-primary" value="#{msg.create}" disabled="true"/>
                     </div>
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn btn-secondary" value="Cancel"
+                        <h:commandButton styleClass="btn btn-secondary" value="#{msg.cancel}"
                                          action="#{knifeCreate.cancelAction()}"/>
                     </div>
                 </div>

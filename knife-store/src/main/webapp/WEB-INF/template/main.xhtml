@@ -36,10 +36,10 @@
                                                  action="#{userLogout.logoutAction()}"/>
                             </h:form>
                         </div>
-<!--                        <h:graphicImage width="50px" rendered="#{facesContext.viewRoot.locale.language == 'pl'}"-->
-<!--                                        value="https://cdn.pixabay.com/photo/2018/06/02/05/17/poland-3447820_1280.png"/>-->
-<!--                        <h:graphicImage width="50px" rendered="#{facesContext.viewRoot.locale.language != 'pl'}"-->
-<!--                                        value="https://e7.pngegg.com/pngimages/559/44/png-clipart-european-union-flag-of-the-united-kingdom-british-flag-logo-thumbnail.png"/>-->
+                        <h:graphicImage width="50px" rendered="#{facesContext.viewRoot.locale.language == 'pl'}"
+                                        value="https://cdn.pixabay.com/photo/2018/06/02/05/17/poland-3447820_1280.png"/>
+                        <h:graphicImage width="50px" rendered="#{facesContext.viewRoot.locale.language != 'pl'}"
+                                        value="https://cdn.pixabay.com/photo/2012/04/10/16/14/union-jack-26119_1280.png"/>
                     </div>
                 </header>
 
@@ -47,7 +47,7 @@
                     <div class="container-fluid">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-around w-100">
                             <li class="nav-item">
-                                <h:link styleClass="nav-link" outcome="/index.xhtml">Home</h:link>
+                                <h:link styleClass="nav-link" outcome="/index.xhtml">#{msg.home}</h:link>
                             </li>
 <!--                            <li class="nav-item">-->
 <!--                                <h:link styleClass="nav-link"-->
