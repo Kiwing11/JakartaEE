@@ -35,7 +35,6 @@ public class KnifeList {
 
     public KnivesModel getKnives() {
         if (knives == null) {
-            System.out.println("Loading knife list");
             knives = factory.knivesToModel().apply(service.findAllForCallerPrincipal());
         }
         return knives;
@@ -43,7 +42,6 @@ public class KnifeList {
 
     public KnivesModel getCategoryKnives(UUID categoryId) {
         if (knives == null) {
-            System.out.println("Loading category knives list");
             knives = factory.knivesToModel().apply(service.findAllByCategory(categoryId).orElseThrow());
         }
         return knives;

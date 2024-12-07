@@ -74,7 +74,6 @@ public class UserService {
         repository.find(id).ifPresent(user -> {
             user.setPhoto(photoPath);
             repository.update(user);
-            System.out.println("User updated: " + user);
         });
     }
 

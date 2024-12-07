@@ -34,8 +34,9 @@ public class CategoryList {
         return categories;
     }
 
-    public String deleteAction(CategoriesModel.Category category) {
+    public void deleteAction(CategoriesModel.Category category) {
         service.delete(category.getId());
-        return "category_list?faces-redirect=true";
+        categories = null;
+        //return "category_list?faces-redirect=true";
     }
 }

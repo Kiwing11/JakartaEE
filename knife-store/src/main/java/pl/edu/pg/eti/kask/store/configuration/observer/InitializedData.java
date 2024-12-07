@@ -65,7 +65,6 @@ public class InitializedData{
     @SneakyThrows
     private void init() {
         if (userService.find("admin").isEmpty()) {
-            System.out.println("Creating initial data");
             User admin = User.builder()
                     .id(UUID.randomUUID())
                     .name("Admin")
@@ -123,7 +122,6 @@ public class InitializedData{
 
             userService.create(admin);
             userService.create(zbigniew);
-            System.out.println("User created: " + zbigniew);
             userService.create(jacek);
             userService.create(mariusz);
             userService.create(blazej);

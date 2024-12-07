@@ -10,7 +10,7 @@
         <article class="text--justified">
             <header><h2>#{msg.categories}</h2></header>
 
-            <h:dataTable value="#{categoryList.categories.categories}" var="category"
+            <h:dataTable id="categoryTable" value="#{categoryList.categories.categories}" var="category"
                          styleClass="table align-middle mb-0 bg-white" headerClass="bg-light">
 
                 <h:column>
@@ -36,7 +36,10 @@
                     <f:facet name="header">#{msg.delete}</f:facet>
                     <h:form>
                         <h:commandButton styleClass="btn" value="#{msg.delete}"
-                                         action="#{categoryList.deleteAction(category)}"/>
+                                         actionListener="#{categoryList.deleteAction(category)}">
+                            <f:ajax execute="@this" render=":categoryTable"/>
+                        </h:commandButton>
+
                     </h:form>
                 </h:column>
 

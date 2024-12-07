@@ -30,7 +30,7 @@
             <div class="col-6 fw-bold mt-5">
                 #{msg.relatedKnives}
             </div>
-            <h:dataTable value="#{knifeList.getCategoryKnives(categoryView.id).knives}" var="knife"
+            <h:dataTable id="knifeTable" value="#{knifeList.getCategoryKnives(categoryView.id).knives}" var="knife"
                          styleClass="table align-middle mb-0 bg-white" headerClass="bg-light">
 
                 <h:column>
@@ -56,7 +56,9 @@
                     <f:facet name="header">#{msg.delete}</f:facet>
                     <h:form>
                         <h:commandButton styleClass="btn" value="#{msg.delete}"
-                                         action="#{knifeList.deleteAction(knife)}"/>
+                                         actionListener="#{knifeList.deleteAction(knife)}">
+                            <f:ajax execute="@this" render=":knifeTable"/>
+                        </h:commandButton>
                     </h:form>
                 </h:column>
 

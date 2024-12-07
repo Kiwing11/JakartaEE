@@ -52,7 +52,6 @@ public class UserLogin {
 
     @SneakyThrows
     public void loginAction() {
-        System.out.println("loginAction");
         Credential credential = new UsernamePasswordCredential(login, new Password(password));
         AuthenticationStatus status = securityContext.authenticate(request, extractResponseFromFacesContext(),
                 withParams().credential(credential));

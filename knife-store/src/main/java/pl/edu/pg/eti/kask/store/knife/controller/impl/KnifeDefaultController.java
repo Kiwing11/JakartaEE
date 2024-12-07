@@ -136,7 +136,6 @@ public class KnifeDefaultController implements KnifeController {
     @Override
     @SneakyThrows
     public void putKnifeByCategory(UUID categoryId, UUID knifeId, PutKnifeRequest request){
-        System.out.println("DZIALAM");
         try{
             categoryService.find(categoryId).ifPresentOrElse(
                     category -> {

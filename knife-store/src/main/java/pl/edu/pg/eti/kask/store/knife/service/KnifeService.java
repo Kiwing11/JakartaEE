@@ -8,6 +8,7 @@ import jakarta.inject.Inject;
 import jakarta.security.enterprise.SecurityContext;
 import jakarta.ws.rs.NotFoundException;
 import lombok.NoArgsConstructor;
+import pl.edu.pg.eti.kask.store.interceptors.LoggingBinding;
 import pl.edu.pg.eti.kask.store.knife.entity.Category;
 import pl.edu.pg.eti.kask.store.knife.entity.Knife;
 import pl.edu.pg.eti.kask.store.knife.repository.api.CategoryRepository;
@@ -85,7 +86,6 @@ public class KnifeService {
 
     @RolesAllowed(UserRoles.USER)
     public void create(Knife knife){
-        System.out.println("Creating knife: " + knife);
         if(knifeRepository.find(knife.getId()).isPresent()){
             throw new IllegalArgumentException("Knife with given id already exists");
         }
@@ -96,6 +96,7 @@ public class KnifeService {
     }
 
     @RolesAllowed(UserRoles.USER)
+    @LoggingBinding
     public void createForCallerPrincipal(Knife knife) {
         User user = userRepository.findByLogin(securityContext.getCallerPrincipal().getName())
                 .orElseThrow(IllegalStateException::new);
@@ -104,17 +105,18 @@ public class KnifeService {
             throw new IllegalArgumentException("Knife with given id already exists");
         }
         knife.setUser(user);
-        System.out.println(knife.getUser());
         knifeRepository.create(knife);
     }
 
     @RolesAllowed(UserRoles.USER)
+    @LoggingBinding
     public void update(Knife knife){
         checkAdminRoleOrOwner(knifeRepository.find(knife.getId()));
         knifeRepository.update(knife);
     }
 
     @RolesAllowed(UserRoles.USER)
+    @LoggingBinding
     public void delete(Knife knife){
         checkAdminRoleOrOwner(knifeRepository.find(knife.getId()));
         knifeRepository.delete(knife);
