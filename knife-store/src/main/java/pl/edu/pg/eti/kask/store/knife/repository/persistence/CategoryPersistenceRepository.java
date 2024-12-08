@@ -4,6 +4,9 @@ import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import pl.edu.pg.eti.kask.store.knife.entity.Category;
 import pl.edu.pg.eti.kask.store.knife.repository.api.CategoryRepository;
 
@@ -27,7 +30,12 @@ public class CategoryPersistenceRepository implements CategoryRepository {
 
     @Override
     public List<Category> findAll() {
-        return em.createQuery("SELECT c FROM Category c", Category.class).getResultList();
+        //return em.createQuery("SELECT c FROM Category c", Category.class).getResultList();
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Category> query = cb.createQuery(Category.class);
+        Root<Category> root = query.from(Category.class);
+        query.select(root);
+        return em.createQuery(query).getResultList();
     }
 
     @Override

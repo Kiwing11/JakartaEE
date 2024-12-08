@@ -3,6 +3,7 @@ package pl.edu.pg.eti.kask.store.knife.model;
 import lombok.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,6 +28,12 @@ public class KnivesModel implements Serializable {
         private UUID id;
 
         private String name;
+
+        private Long version;
+
+        private LocalDateTime creationDateTime;
+
+        private LocalDateTime editionDateTime;
 
     }
 

@@ -14,6 +14,7 @@ public class KnifeToEditModelFunction implements Function<Knife, KnifeEditModel>
                 .name(entity.getName())
                 .bladeLength(entity.getBladeLength())
                 .productionDate(entity.getProductionDate())
+                .version(entity.getVersion())
                 .build();
     }
 

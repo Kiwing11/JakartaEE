@@ -16,6 +16,12 @@
             <h:form styleClass="container" onreset="onReset()" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-4 p-2">
+                        <h:messages/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4 p-2">
                         <div class="form-outline">
                             <h:inputText id="name" value="#{knifeEdit.knife.name}" styleClass="form-control"/>
                             <h:outputLabel for="name" value="#{msg.name}:" styleClass="form-label"/>

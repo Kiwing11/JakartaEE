@@ -19,6 +19,8 @@ public class UpdateKnifeWithModelFunction implements BiFunction<Knife, KnifeEdit
                 .bladeLength(request.getBladeLength())
                 .productionDate(request.getProductionDate())
                 .category(entity.getCategory())
+                .version(request.getVersion())
+                .creationDateTime(entity.getCreationDateTime())
                 .user(entity.getUser())
                 .build();
     }

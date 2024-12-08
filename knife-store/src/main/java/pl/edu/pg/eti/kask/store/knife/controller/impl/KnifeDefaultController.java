@@ -4,6 +4,7 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBAccessException;
 import jakarta.inject.Inject;
+import jakarta.persistence.OptimisticLockException;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
@@ -11,6 +12,7 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
+import org.hibernate.TransactionException;
 import pl.edu.pg.eti.kask.store.factory.DtoFunctionFactory;
 import pl.edu.pg.eti.kask.store.knife.controller.api.KnifeController;
 import pl.edu.pg.eti.kask.store.knife.dto.GetKnifeResponse;
@@ -169,6 +171,10 @@ public class KnifeDefaultController implements KnifeController {
         } catch (EJBAccessException e) {
             log.log(Level.WARNING, e.getMessage(), e);
             throw new ForbiddenException(e.getMessage());
+        } catch (TransactionException ex) {
+            if (ex.getCause() instanceof OptimisticLockException) {
+                throw new BadRequestException(ex.getCause());
+            }
         }
     }
 

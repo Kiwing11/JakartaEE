@@ -16,6 +16,8 @@ public class UpdateKnifeWithRequestFunction implements BiFunction<Knife, PatchKn
                 .bladeLength(request.getBladeLength())
                 .productionDate(request.getProductionDate())
                 .category(entity.getCategory())
+                .version(request.getVersion())
+                .creationDateTime(entity.getCreationDateTime())
                 .build();
     }
 }

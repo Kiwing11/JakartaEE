@@ -19,4 +19,5 @@ public class PutKnifeRequest {
     private LocalDate productionDate;
     private User user;
     private UUID category;
+    private long version;
 }

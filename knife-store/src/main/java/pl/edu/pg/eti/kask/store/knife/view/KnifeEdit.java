@@ -1,13 +1,16 @@
 package pl.edu.pg.eti.kask.store.knife.view;
 
 import jakarta.ejb.EJB;
+import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.persistence.OptimisticLockException;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OptimisticLock;
 import pl.edu.pg.eti.kask.store.factory.ModelFunctionFactory;
 import pl.edu.pg.eti.kask.store.knife.entity.Knife;
 import pl.edu.pg.eti.kask.store.knife.model.KnifeEditModel;
@@ -29,6 +32,8 @@ public class KnifeEdit implements Serializable {
 
     private final ModelFunctionFactory factory;
 
+    private final FacesContext facesContext;
+
     @Setter
     @Getter
     private UUID id;
@@ -37,8 +42,9 @@ public class KnifeEdit implements Serializable {
     private KnifeEditModel knife;
 
     @Inject
-    public KnifeEdit(ModelFunctionFactory factory) {
+    public KnifeEdit(ModelFunctionFactory factory, FacesContext facesContext) {
         this.factory = factory;
+        this.facesContext = facesContext;
     }
 
     @EJB
@@ -64,10 +70,27 @@ public class KnifeEdit implements Serializable {
      *
      * @return navigation case to the same page
      */
-    public String saveAction() {
-        service.update(factory.updateKnife().apply(service.find(id).orElseThrow(), knife));
-        //String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
-        return "/knife/knife_view?id=" + id + "&faces-redirect=true";
+//    public String saveAction() {
+//        service.update(factory.updateKnife().apply(service.find(id).orElseThrow(), knife));
+//        //String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+//        return "/knife/knife_view?id=" + id + "&faces-redirect=true";
+//    }
+    public String saveAction() throws IOException{
+        KnifeEditModel knifeState = knife;
+        try{
+            service.update(factory.updateKnife().apply(service.find(id).orElseThrow(), knife));
+            return "/knife/knife_view?id=" + id + "&faces-redirect=true";
+        } catch (Exception e){
+            if(e.getCause() instanceof OptimisticLockException){
+                init();
+                String message = "WARNING: Object has been modified by another user. Cannot save changes.\n";
+                message += "State of the object in database: " + service.find(id).toString();
+                message += "\n If you want to overwrite changes, click save again.";
+                facesContext.addMessage(null, new FacesMessage(message));
+                knife = knifeState;
+            }
+            return null;
+        }
     }
 
     public String cancelAction(){

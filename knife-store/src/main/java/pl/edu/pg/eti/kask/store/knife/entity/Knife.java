@@ -3,6 +3,7 @@ package pl.edu.pg.eti.kask.store.knife.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import pl.edu.pg.eti.kask.store.entity.VersionAndCreationDateAuditable;
 import pl.edu.pg.eti.kask.store.user.entity.User;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -15,10 +16,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString(callSuper = true)
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "knives")
-public class Knife implements Serializable {
+public class Knife extends VersionAndCreationDateAuditable implements Serializable {
     @Id
     private UUID id;
     private String name;

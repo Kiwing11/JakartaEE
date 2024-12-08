@@ -18,4 +18,5 @@ public class KnifeEditModel {
     private String name;
     private double bladeLength;
     private LocalDate productionDate;
+    private Long version;
 }

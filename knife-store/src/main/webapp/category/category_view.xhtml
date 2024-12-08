@@ -39,6 +39,26 @@
                 </h:column>
 
                 <h:column>
+                    <f:facet name="header">#{msg.version}</f:facet>
+                    <h:outputText value="#{knife.version}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">#{msg.created}</f:facet>
+                    <h:outputText value="#{knife.creationDateTime}">
+                        <f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd HH:mm"/>
+                    </h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">#{msg.updated}</f:facet>
+                    <h:outputText value="#{knife.editionDateTime}">
+                        <f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd HH:mm"/>
+                    </h:outputText>
+                </h:column>
+
+
+                <h:column>
                     <f:facet name="header">#{msg.view}</f:facet>
                     <h:link outcome="/knife/knife_view.xhtml" value="#{msg.view}">
                         <f:param name="id" value="#{knife.id}"/>

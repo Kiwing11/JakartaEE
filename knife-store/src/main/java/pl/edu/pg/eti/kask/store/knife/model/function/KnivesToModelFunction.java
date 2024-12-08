@@ -14,6 +14,9 @@ public class KnivesToModelFunction implements Function<List<Knife>, KnivesModel>
                         .map(knife -> KnivesModel.Knife.builder()
                                 .id(knife.getId())
                                 .name(knife.getName())
+                                .version(knife.getVersion())
+                                .creationDateTime(knife.getCreationDateTime())
+                                .editionDateTime(knife.getEditionDateTime())
                                 .build())
                         .toList())
                 .build();

@@ -31,4 +31,5 @@ public class GetKnifeResponse {
     private double bladeLength;
     private LocalDate productionDate;
     private Category category;
+    private Long version;
 }

@@ -2,6 +2,7 @@ package pl.edu.pg.eti.kask.store.knife.model;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -19,4 +20,9 @@ public class CategoryModel {
 
     private String description;
 
+    private Long version;
+
+    private LocalDateTime creationDateTime;
+
+    private LocalDateTime editionDateTime;
 }

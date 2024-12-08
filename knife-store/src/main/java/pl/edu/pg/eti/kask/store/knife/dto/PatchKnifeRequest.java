@@ -15,4 +15,5 @@ public class PatchKnifeRequest {
     private String name;
     private double bladeLength;
     private LocalDate productionDate;
+    private Long version;
 }

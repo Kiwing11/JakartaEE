@@ -17,6 +17,7 @@ public class KnifeToResponseFunction implements Function<Knife, GetKnifeResponse
                         .id(entity.getCategory().getId())
                         .name(entity.getCategory().getName())
                         .build())
+                .version(entity.getVersion())
                 .build();
     }
 }
